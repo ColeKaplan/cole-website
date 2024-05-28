@@ -1,0 +1,44 @@
+#nav-bar {
+    background-color: #3b3d4b;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .nav-header {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+  }
+  
+  .nav-link {
+    color: grey;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform .3s ease, color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .nav-link:active {
+    color: red;
+  }
+
+  .nav-slash{
+    color: grey;
+  }
+  
+  .blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    color: white;
+  }
+  
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  
