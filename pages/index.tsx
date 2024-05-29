@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from '@/components/Header';
+import './index.css'
 
 export default function Home(){
     return(
-        <>
-        <main>
+        <div className='page'>
             <Header />
-        </main>
-        </>
+            <div>
+                
+            </div>
+        </div>
     );
 }
