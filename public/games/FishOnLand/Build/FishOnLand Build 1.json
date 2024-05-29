@@ -1,0 +1,16 @@
+{
+"companyName": "Bene and Cole Creations",
+"productName": "Fish On Land",
+"productVersion": "0.1",
+"dataUrl": "FishOnLand Build 1.data.unityweb",
+"wasmCodeUrl": "FishOnLand Build 1.wasm.code.unityweb",
+"wasmFrameworkUrl": "FishOnLand Build 1.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.1.12f1"
+}

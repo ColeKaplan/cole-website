@@ -6,6 +6,13 @@ export default function Games() {
     <>
         <Header />
         <div>Games</div>
+        <iframe
+          src="/games/FishOnLand/index.html"
+          width="960"
+          height="600"
+          allowFullScreen
+          title="Fish On Land Game"
+        ></iframe>
     </>
     ); 
 }
