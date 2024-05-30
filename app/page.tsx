@@ -1,11 +1,9 @@
 import React from 'react';
-import Header from '@/components/Header';
-import './index.css'
+import Header from '@/app/Header';
 
 export default function Home(){
     return(
-        <div className='page'>
-            <Header />
+        <div className='mt-16'>
             <div>
                 
             </div>
