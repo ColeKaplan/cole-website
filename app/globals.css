@@ -76,10 +76,3 @@
       @apply bg-background text-foreground;
     }
   }
-  .roboto {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  .poppins {
-    font-family: 'Poppins', sans-serif;
-  }
