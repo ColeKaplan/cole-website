@@ -34,23 +34,30 @@ function Header() {
     <>
     <header className='flex flex-col justify-between p-4'>
       <div>
-        <h1 className={`text-2xl ${poppins.className}`}>Cole Kaplan</h1>
+        <h1 className={`text-4xl font-bold ${poppins.className}`}>Cole Kaplan</h1>
       </div>
-      <div className={`flex justify-between ${roboto.className}`}>
+      <div className={`text-2xl flex justify-between ${roboto.className}`}>
         <p>Software Engineer & Game Designer @ Georgia Tech</p>
-        <div className=' hidden md:flex flex-row space-x-2'>
-          <a href="/" className={`hover:text-blue-500 ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</a>
+        <div className=' hidden lg:flex flex-row space-x-2'>
+          <a href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</a>
           <p>|</p>
-          <a href="/about" className={`hover:text-blue-500 ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</a>
+          <a href="/about" className={`hover:text-[#A0BEE6] ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</a>
           <p>|</p>
-          <a href="/resume" className={`hover:text-blue-500 ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</a>
+          <a href="/resume" className={`hover:text-[#A0BEE6] ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</a>
           <p>|</p>
-          <a href="/contact" className={`hover:text-blue-500 ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</a>
+          <a href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</a>
         </div>
-        <div className='2xl:hidden xl:hidden lg:hidden md:hidden sm:flex justify-end'>
+        <div className='2xl:hidden xl:hidden lg:hidden md:flex sm:flex justify-end'>
           <Popover>
             <PopoverTrigger><Bars3Icon className='h-6 w-6'></Bars3Icon></PopoverTrigger>
-            <PopoverContent>Place content for the popover here.</PopoverContent>
+            <PopoverContent className='flex justify-end max-w-fill w-25 2xl:hidden xl:hidden lg:hidden'>
+              <div className='flex flex-col'>
+                  <a href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</a>
+                  <a href="/about" className={`hover:text-[#A0BEE6] ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</a>
+                  <a href="/resume" className={`hover:text-[#A0BEE6] ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</a>
+                  <a href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</a>
+                </div>
+            </PopoverContent>
           </Popover>
         </div>
       </div>

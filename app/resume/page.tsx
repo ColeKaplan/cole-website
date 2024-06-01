@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Resume(){
     return(
-        <div className='mt-16'>
+        <div className=''>
             <div>
                 <p>Resume</p>
             </div>
