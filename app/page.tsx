@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Home(){
     return(
-        <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col item'>
             <div className='flex items-center justify-center'>
                 <div>
                     <Card 
@@ -33,26 +33,26 @@ export default function Home(){
             <div className='flex items-center justify-center'>
                 <div>
                     <Card 
-                    link='/WildRanger'
-                    image='/games/WildRanger/BankImage.png'
-                    title="Wild Ranger"
-                    text="Cowboy themed Shoot 'Em Up' with a live leaderboard"
+                    link='/DrawingGame'
+                    image='/games/DrawingGame/Car.png'
+                    title="Drawing for AI"
+                    text="Try to get the AI to guess the category by drawing"
                     />
                 </div>
                 <div>
                     <Card 
-                    link='/KnightsJourney'
+                    link='/Chess'
                     image='/games/KnightsJourney/KnightImage.png'
-                    title="Knight's Journey"
-                    text="Dungeon Crawler, try to get past the enemies"
+                    title="Chess"
+                    text="Play a friend or challenge our algorithm"
                     />
                 </div>
                 <div>
                     <Card 
                     link='/FishOnLand'
                     image='/games/FishOnLand/FishImage.png'
-                    title="Fish on Land"
-                    text="Help a lost fish return to his home in the ocean"
+                    title="Unknown"
+                    text="Maybe Android Studio class game"
                     />
                 </div>
             </div>
