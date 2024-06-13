@@ -1,0 +1,8 @@
+.bg-dark {
+    --tw-bg-opacity: 1;
+    background-color: rgb(86 101 120 / var(--tw-bg-opacity));
+}
+.bg-light{
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 221 225 / var(--tw-bg-opacity));
+}
