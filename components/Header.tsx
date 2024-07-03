@@ -39,23 +39,23 @@ function Header() {
       <div className={`text-2xl flex justify-between ${roboto.className}`}>
         <p>Software Engineer & Game Designer @ Georgia Tech</p>
         <div className=' hidden lg:flex flex-row space-x-2'>
-          <a href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</a>
+          <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
           <p>|</p>
-          <a href="/about" className={`hover:text-[#A0BEE6] ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</a>
+          <Link href="/about" className={`hover:text-[#A0BEE6] ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</Link>
           <p>|</p>
-          <a href="/resume" className={`hover:text-[#A0BEE6] ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</a>
+          <Link href="/resume" className={`hover:text-[#A0BEE6] ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</Link>
           <p>|</p>
-          <a href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</a>
+          <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
         </div>
         <div className='2xl:hidden xl:hidden lg:hidden md:flex sm:flex justify-end'>
           <Popover>
             <PopoverTrigger><Bars3Icon className='h-6 w-6'></Bars3Icon></PopoverTrigger>
             <PopoverContent className='flex justify-end max-w-fill w-25 2xl:hidden xl:hidden lg:hidden'>
               <div className='flex flex-col'>
-                  <a href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</a>
-                  <a href="/about" className={`hover:text-[#A0BEE6] ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</a>
-                  <a href="/resume" className={`hover:text-[#A0BEE6] ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</a>
-                  <a href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</a>
+                  <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
+                  <Link href="/about" className={`hover:text-[#A0BEE6] ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</Link>
+                  <Link href="/resume" className={`hover:text-[#A0BEE6] ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</Link>
+                  <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
                 </div>
             </PopoverContent>
           </Popover>

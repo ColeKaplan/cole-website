@@ -1,6 +1,7 @@
 import { Poppins } from 'next/font/google'
 import { Montserrat } from 'next/font/google'
 import Image from 'next/image'
+import React from 'react';
 
 const montserrat = Montserrat({
     subsets: ['latin'],
