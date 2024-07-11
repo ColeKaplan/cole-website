@@ -6,16 +6,16 @@ export default function Home(){
         <div className='flex flex-col justify-items-start items-center min-h-screen py-10 bg-slate-500'>
             <div className='flex justify-center items-center flex-col text-[#FFFFFF]'>
                 <h1 className='text-4xl font-bold text-[#FFFFFF] mb-4'>Welcome to my portfolio!</h1>
-                <div className='flex flex-col text-lg pb-5'>
+                <div className='flex flex-col text-lg p-5'>
                     <p>
                         I am a computer science student at Georgia Tech going into my third year with a focus in graphics and cybersecurity.
                     </p>
-                    <p>
+                    <p className='pt-5 lg:pt-0'>
                         As you can see below, I love to make games! I also have other projects that I am in the process of transitioning to React.
                     </p>
                 </div>
             </div>
-            <div className='lg:block md:hidden'>
+            <div className='hidden lg:block'>
                 <div className='flex justify-center'>
                     <div>
                         <Card 
@@ -70,7 +70,7 @@ export default function Home(){
                 </div> */}
             </div>
             <div className='flex justify-center mt-10'>
-                <h1 className='text-4xl font-bold text-[#FFFFFF] mb-4 2xl:hidden xl:hidden lg:hidden'>Please increase your screen size</h1>
+                <h1 className='text-4xl font-bold text-[#FFFFFF] mb-4 2xl:hidden xl:hidden lg:hidden'>Please increase screen size to view games</h1>
             </div>
         </div>
     );
