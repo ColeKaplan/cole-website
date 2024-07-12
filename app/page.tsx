@@ -41,6 +41,14 @@ export default function Home(){
                         text="Help a lost fish return to his home in the ocean"
                         />
                     </div>
+                    <div>
+                        <Card 
+                        link='/games/WalldOff'
+                        image='/games/WalldOff/WalldOffImage.png'
+                        title="WalldOff"
+                        text="Avoid the skeletons and collect coins using walls"
+                        />
+                    </div>
                 </div>
                 {/* <div className='flex justify-center'>
                     <div>
