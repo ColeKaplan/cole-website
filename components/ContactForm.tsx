@@ -36,9 +36,8 @@ export default function ContactForm() {
     return(
         <div className="mt-8 lg:w-1/2 lg:mx-6">
             <div className="w-full px-8 py-10 mx-auto overflow-hidden bg-[#d4edff] shadow-2xl rounded-xl dark:bg-gray-900 lg:max-w-xl mb-5">
-                <h1 className="text-xl font-large font-semibold text-gray-700 dark:text-gray-200">Contact form</h1>
 
-                <form className="mt-4" ref={form} onSubmit={sendEmail}>
+                <form className="mt-0" ref={form} onSubmit={sendEmail}>
                     <div className="flex-1">
                         <label className="block mb-2 text-sm font-semibold text-gray-600 dark:text-gray-200">Full Name</label>
                         <input type="text" name="their_name" placeholder="Your Name" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />

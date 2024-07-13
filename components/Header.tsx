@@ -33,11 +33,15 @@ function Header() {
   return (
     <>
     <header className='flex flex-col justify-between p-4'>
-      <div>
-        <h1 className={`text-4xl font-bold ${poppins.className}`}>Cole Kaplan</h1>
-      </div>
+      <Link href="/">
+        <div>
+          <h1 className={`text-4xl font-bold ${poppins.className}`}>Cole Kaplan</h1>
+        </div>
+      </Link>
       <div className={`text-2xl flex justify-between ${roboto.className}`}>
-        <p>Software Engineer & Game Designer @ Georgia Tech</p>
+        <Link href="/">
+          <p>Software Engineer & Game Designer @ Georgia Tech</p>
+        </Link>
         <div className=' hidden lg:flex flex-row space-x-2'>
           <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
           <p>|</p>
