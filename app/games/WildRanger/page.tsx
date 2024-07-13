@@ -8,6 +8,8 @@ export default function WildRanger(){
                 <UnityGame
                 build="/games/WildRanger/index.html"
                 title="Wild Ranger"
+                width="1000"
+                height="660"
                 />
             </div>
         </div>

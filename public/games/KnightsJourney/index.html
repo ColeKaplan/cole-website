@@ -6,13 +6,13 @@
     <title>Unity WebGL Player | Dungeon Crawler</title>
   </head>
   <body style="text-align: center">
-    <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
-    <script src="Build/KnightsJourney.loader.js"></script>
+    <canvas id="unity-canvas" style="width: 800px; height: 500px; background: #231F20"></canvas>
+    <script src="Build/KnightsJourney_Website.loader.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/KnightsJourney.data",
-        frameworkUrl: "Build/KnightsJourney.framework.js",
-        codeUrl: "Build/KnightsJourney.wasm",
+        dataUrl: "Build/KnightsJourney_Website.data",
+        frameworkUrl: "Build/KnightsJourney_Website.framework.js",
+        codeUrl: "Build/KnightsJourney_Website.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Cole and Bene Productions",
         productName: "Dungeon Crawler",

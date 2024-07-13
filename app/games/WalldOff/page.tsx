@@ -7,9 +7,9 @@ export default function WalldOff(){
             <div>
                 <UnityGame
                 build="/games/WalldOff/index.html"
-                title="WalldOff"
-                width="960"
-                height="600"
+                title="Walled Off"
+                width="1000"
+                height="660"
                 />
             </div>
         </div>
