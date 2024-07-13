@@ -3,10 +3,10 @@ import React from 'react';
 
 export default function Home(){
     return(
-        <div className='flex flex-col justify-items-start items-center min-h-screen py-10 bg-slate-500'>
+        <div className='flex flex-col min-h-screen items-center py-10 bg-slate-500'>
             <div className='flex justify-center items-center flex-col text-[#FFFFFF]'>
-                <h1 className='text-4xl font-bold text-[#FFFFFF] mb-4'>Welcome to my portfolio!</h1>
-                <div className='flex flex-col text-lg p-5'>
+                <h1 className='text-4xl font-bold text-[#FFFFFF] mb-4 text-center'>Welcome to my portfolio!</h1>
+                <div className='flex flex-col text-lg text-center p-5'>
                     <p>
                         I am a computer science student at Georgia Tech going into my third year with a focus in graphics and cybersecurity.
                     </p>
@@ -77,8 +77,8 @@ export default function Home(){
                     </div>
                 </div> */}
             </div>
-            <div className='flex justify-center mt-10'>
-                <h1 className='text-4xl font-bold text-[#FFFFFF] mb-4 2xl:hidden xl:hidden lg:hidden'>Please increase screen size to view games</h1>
+            <div className='flex mt-10'>
+                <h1 className='text-4xl text-center font-bold text-[#FFFFFF] mb-4 2xl:hidden xl:hidden lg:hidden'>Please increase screen size to view games</h1>
             </div>
         </div>
     );
