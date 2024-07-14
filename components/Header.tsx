@@ -45,10 +45,6 @@ function Header() {
         <div className=' hidden lg:flex flex-row space-x-2'>
           <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
           <p>|</p>
-          <Link href="/about" className={`hover:text-[#A0BEE6] ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</Link>
-          <p>|</p>
-          <Link href="/resume" className={`hover:text-[#A0BEE6] ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</Link>
-          <p>|</p>
           <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
         </div>
         <div className='2xl:hidden xl:hidden lg:hidden md:flex sm:flex justify-end'>
