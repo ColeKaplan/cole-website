@@ -9,7 +9,7 @@ export default function KnightsJourney(){
                 build="/games/KnightsJourney/index.html"
                 title="Knight's Journey"
                 width="900"
-                height="550"
+                height="10000"
                 />
             </div>
         </div>

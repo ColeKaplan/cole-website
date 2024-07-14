@@ -3,15 +3,13 @@ import React from 'react';
 
 export default function WalldOff(){
     return(
-        <div className='flex flex-col justify-items-start items-center min-h-screen py-10 bg-slate-500'>
-            <div>
+        <div className='min-h-screen py-10 bg-slate-500'>
                 <UnityGame
                 build="/games/WalldOff/index.html"
                 title="Walled Off"
-                width="1000"
-                height="660"
+                width="800"
+                height="10000"
                 />
-            </div>
         </div>
     );
 }
