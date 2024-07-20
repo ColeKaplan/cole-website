@@ -45,7 +45,7 @@ export default function Home(){
                         <Card 
                         link='/games/WalldOff'
                         image='/games/WalldOff/WalldOffImage.png'
-                        title="WalldOff"
+                        title="Walled Off"
                         text="Avoid the skeletons and collect coins using walls"
                         />
                     </div>

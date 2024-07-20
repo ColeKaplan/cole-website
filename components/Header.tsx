@@ -53,8 +53,6 @@ function Header() {
             <PopoverContent className='flex justify-end max-w-fill w-25 2xl:hidden xl:hidden lg:hidden'>
               <div className='flex flex-col'>
                   <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
-                  <Link href="/about" className={`hover:text-[#A0BEE6] ${pathname === '/about' ? 'active-link' : ''} ${roboto.className}`}>About</Link>
-                  <Link href="/resume" className={`hover:text-[#A0BEE6] ${pathname === '/resume' ? 'active-link' : ''} ${roboto.className}`}>Resume</Link>
                   <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
                 </div>
             </PopoverContent>
