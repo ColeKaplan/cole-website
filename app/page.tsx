@@ -1,9 +1,10 @@
 import Card from '@/components/Card';
 import React from 'react';
+import SocialsLinks from '@/components/SocialsLinks';
 
 export default function Home(){
     return(
-        <div className='flex flex-col min-h-screen items-center py-10 bg-slate-500'>
+        <div id="columnDivForPage" className='flex flex-col min-h-screen items-center py-10 bg-slate-500'>
             <div className='flex justify-center items-center flex-col text-[#FFFFFF]'>
                 <h1 className='text-4xl font-bold text-[#FFFFFF] mb-4 text-center'>Welcome to my portfolio!</h1>
                 <div className='flex flex-col text-lg text-center p-5'>
@@ -16,7 +17,7 @@ export default function Home(){
                 </div>
             </div>
             <div className='hidden lg:block'>
-                <div className='flex justify-center'>
+                <div id="cardsForGames" className='flex justify-center'>
                     <div>
                         <Card 
                         link='/games/WildRanger'
@@ -80,6 +81,8 @@ export default function Home(){
             <div className='flex mt-10'>
                 <h1 className='text-4xl text-center font-bold text-[#FFFFFF] mb-4 2xl:hidden xl:hidden lg:hidden'>Please increase screen size to view games</h1>
             </div>
+            <SocialsLinks/>
+            
         </div>
     );
 }
