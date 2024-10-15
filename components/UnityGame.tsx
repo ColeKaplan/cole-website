@@ -12,7 +12,7 @@ export default function UnityGame(props: any) {
         const height = hasWindow ? window.innerHeight : null;
         return {
         width,
-        height,
+        height
         };
     }
 
@@ -20,10 +20,10 @@ export default function UnityGame(props: any) {
 
     useEffect(() => {
         if (hasWindow) {
+            setWindowDimensions(getWindowDimensions());
             const handleResize = () => {
                 setWindowDimensions(getWindowDimensions());
             }
-
             window.addEventListener('resize', handleResize);
             return () => window.removeEventListener('resize', handleResize);
         }

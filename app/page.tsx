@@ -12,7 +12,7 @@ export default function Home(){
                         I am a computer science student at Georgia Tech going into my third year with a focus in graphics and cybersecurity.
                     </p>
                     <p className='pt-5 lg:pt-0'>
-                        As you can see below, I love to make games! I also have other projects that I am in the process of transitioning to React.
+                        As you can see below, I love to make games!
                     </p>
                 </div>
             </div>
@@ -46,7 +46,7 @@ export default function Home(){
                         <Card 
                         link='/games/WalldOff'
                         image='/games/WalldOff/WalldOffImage.png'
-                        title="WalldOff"
+                        title="Walled Off"
                         text="Avoid the skeletons and collect coins using walls"
                         />
                     </div>
