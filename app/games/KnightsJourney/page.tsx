@@ -8,7 +8,8 @@ export default function KnightsJourney(){
                 <UnityGame
                 build="/games/KnightsJourney/index.html"
                 title="Knight's Journey"
-                width="900"
+                width="800"
+                widthPercent=".6"
                 height="10000"
                 />
             </div>

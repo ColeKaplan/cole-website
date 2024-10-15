@@ -9,6 +9,7 @@ export default function FishOnLand(){
                 build="/games/FishOnLand/index.html"
                 title="FishOnLand"
                 width="1000"
+                widthPercent=".75"
                 height="10000"
                 />
             </div>

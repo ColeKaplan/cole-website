@@ -8,6 +8,7 @@ export default function WalldOff(){
                 build="/games/WalldOff/index.html"
                 title="Walled Off"
                 width="800"
+                widthPercent=".75"
                 height="10000"
                 />
         </div>
