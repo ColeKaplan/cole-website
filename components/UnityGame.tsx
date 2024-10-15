@@ -20,7 +20,6 @@ export default function UnityGame(props: any) {
 
     useEffect(() => {
         if (hasWindow) {
-            setWindowDimensions(getWindowDimensions());
             const handleResize = () => {
                 setWindowDimensions(getWindowDimensions());
             }
@@ -29,14 +28,21 @@ export default function UnityGame(props: any) {
         }
     }, [hasWindow]);
 
+    const [frame, setFrame] = useState(<></>);
+
+    useEffect(() => {
+        setFrame(<iframe src={props.build} 
+        width={windowDimensions.width ? windowDimensions.width * props.widthPercent : props.width} 
+        height={props.height}  
+        className='overflow-hidden'/>);
+    }, [windowDimensions.width]);
+
 
     return(
         <div className="flex items-center justify-center flex-col overflow-x-hidden">
             <h1 className='text-4xl font-bold text-[#FFFFFF] pb-4'>{props.title}</h1>
-            <iframe src={props.build} 
-            width={windowDimensions.width != null ? windowDimensions.width * .75 : props.width} 
-            height={props.height}  
-            className='overflow-hidden'/>
+
+            {frame};
         </div>
     );
 

@@ -9,6 +9,7 @@ export default function WildRanger(){
                 build="/games/WildRanger/index.html"
                 title="Wild Ranger"
                 width="1000"
+                widthPercent=".75"
                 height="10000"
                 />
             </div>
