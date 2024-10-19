@@ -1,12 +1,11 @@
 import React from 'react';
-import ChessSquare from '@/components/ChessComponents/ChessSquare';
+import Chessboard from '@/components/ChessComponents/Chessboard';
 
 export default function Chess(){
     return(
-        <div className='mt-16'>
+        <div className='mt-2'>
             <div>
-                <ChessSquare 
-                position='e1'
+                <Chessboard
                 />
             </div>
         </div>

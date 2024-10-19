@@ -1,0 +1,13 @@
+.black-tile{
+    background: rgb(184, 134, 100);
+}
+
+.white-tile{
+    background: rgb(240, 217, 183);
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+}
