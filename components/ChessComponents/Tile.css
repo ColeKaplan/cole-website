@@ -1,3 +1,9 @@
+.black-tile, .white-tile {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+
 .black-tile{
     background: rgb(184, 134, 100);
 }
@@ -14,13 +20,23 @@
     background: rgb(252, 217, 158);
 }
 
-.black-tile.highlighted{
-    background: rgb(154, 107, 77);
+.black-tile .highlighted{
+    background: rgb(144, 104, 78);
+    border-radius: 50%;
 }
 
-.white-tile.highlighted{
-    background: rgb(172, 151, 115);
+.white-tile .highlighted{
+    background: rgb(143, 129, 104);
+    border-radius: 50%;
 }
+
+.highlighted.empty{
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    background: rgb(103, 95, 82, 80%);
+}
+
 
 .image{
     width: 100%;
