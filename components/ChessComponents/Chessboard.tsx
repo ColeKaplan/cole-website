@@ -8,6 +8,7 @@ import { bishopMoves, bishopCaptures } from './Pieces/Bishop'
 import { rookMoves, rookCaptures } from './Pieces/Rook'
 import { queenMoves, queenCaptures } from './Pieces/Queen'
 import { kingMoves, kingCaptures } from './Pieces/King'
+import { PiCheckSquareOffset, PiDeviceMobileSpeaker } from 'react-icons/pi'
 
 
 let whiteMove = true
@@ -75,6 +76,16 @@ export default function Chessboard(){
         else if (pieces[x][y].empty && pieceSelected) {
             if (possibleMoves && possibleMoves.some(move => move[0] === x && move[1] === y)) {
                 unhighlightMoves()
+
+                // Check if it is a castle
+                if(pieces[pieceSelected[0]][pieceSelected[1]].name == "king" && Math.abs(pieceSelected[1] - y) == 2) {
+                    if(pieceSelected[1] > y) {
+                        movePiece([pieceSelected[0],0],[pieceSelected[0],3])
+                    } else {
+                        movePiece([pieceSelected[0],7],[pieceSelected[0],5])
+                    }
+                }
+
                 movePiece(pieceSelected, [x,y])
                 whiteMove = !whiteMove
                 selectPiece(null)
@@ -248,15 +259,13 @@ const unhighlightPiece = (piece: Piece) : Piece => {
     return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: false, empty: piece.empty});
 }
 
-const isAttacked = (pieces: Piece[][], x: number, y: number, isWhite: boolean): boolean => {
-    console.log("checking attacked")
+export const isAttacked = (pieces: Piece[][], x: number, y: number, isWhite: boolean): boolean => {
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             const piece : Piece = pieces[i][j]
             if (piece && piece.isWhite !== isWhite) {
                 const moves = calculatePossibleCaptures(pieces, piece, i, j);
                 if (moves.some(move => move[0] === x && move[1] === y)) {
-                    console.log("can't go to: " + x + ", " + y + "  because of " + piece.name)
                     return true;
                 }
             }
@@ -268,10 +277,37 @@ const isAttacked = (pieces: Piece[][], x: number, y: number, isWhite: boolean): 
 const removeChecks = (moves: number[][], pieces: Piece[][], piece: Piece, x: number, y: number) => {
     if(piece.name == "king") {
         for (let i = 0; i < moves.length; i++) {
-            console.log("checking move: " + moves[i][0] + moves[i][1])
             if(isAttacked(pieces, moves[i][0], moves[i][1], piece.isWhite)) {
                 moves.splice(i,1);
                 i--
+            }
+        }
+    } else {
+        for (let i = 0; i < moves.length; i++) {
+            const newPieces = pieces.map((row, rowIndex) =>
+                row.map((piece, colIndex) => {
+                    if (rowIndex === x && colIndex === y) {
+                        return emptyPiece()
+                    }
+                    if (rowIndex === moves[i][0] && colIndex === moves[i][1]) {
+                        return deselectAndMove(pieces[x][y])
+                    }
+                    return piece
+                })
+            )
+            let looking = true;
+            for(let k = 0; k <= 7; k++) {
+                if(looking){
+                    for(let j = 0; j <= 7; j++) {
+                        if(looking && pieces[k][j].name == "king" && pieces[k][j].isWhite == piece.isWhite) {
+                            if (isAttacked(newPieces, k, j, piece.isWhite)) {
+                                moves.splice(i,1);
+                                i--;
+                                looking = false;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
