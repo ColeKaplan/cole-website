@@ -1,7 +1,5 @@
 .black-tile, .white-tile {
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
 }
 
 .black-tile{

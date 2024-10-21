@@ -28,7 +28,7 @@ export default function Tile(props: any) {
     return (<div className={color} onClick={props.onClick}>
         <div className={highlightedColor}>
             {/* {props.x}, {props.y} */}
-            {props.piece.empty == false && <Image src={props.piece.image} alt='chess piece' className='image z-20' width={60} height={60} />}
+            {props.piece.empty == false && <Image src={props.piece.image} alt='chess piece' className='image z-20' width={60} height={60} draggable="false" />}
         </div>
     </div>);
 }

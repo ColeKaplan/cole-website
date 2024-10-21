@@ -6,5 +6,4 @@
     display: grid;
     grid-template-columns: repeat(8, calc(var(--width) / 8));
     grid-template-rows: repeat(8, calc(var(--height) / 8));
-    
 }

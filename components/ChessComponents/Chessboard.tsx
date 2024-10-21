@@ -2,10 +2,17 @@
 import './Chessboard.css'
 import React, { useEffect, useState } from 'react'
 import Tile from './Tile'
+import { pawnCaptures, pawnMoves } from './Pieces/Pawn'
+import { knightMoves, knightCaptures } from './Pieces/Knight'
+import { bishopMoves, bishopCaptures } from './Pieces/Bishop'
+import { rookMoves, rookCaptures } from './Pieces/Rook'
+import { queenMoves, queenCaptures } from './Pieces/Queen'
+import { kingMoves, kingCaptures } from './Pieces/King'
+
 
 let whiteMove = true
 
-interface Piece {
+export interface Piece {
     name: string
     isWhite: boolean 
     image: string
@@ -45,6 +52,7 @@ export default function Chessboard(){
             unhighlightMoves()
             let moves : number[][] | null = null
             moves = calculatePossibleMoves(pieces, pieces[x][y], x, y)
+            removeChecks(moves, pieces, pieces[x][y], x, y)
             setPossibleMoves(moves)
 
             setPieces(prevPieces => {
@@ -63,7 +71,7 @@ export default function Chessboard(){
                 return newPieces
             })
         } 
-        // Moving a piece to an empty square    TODO: Check if it's a valid move
+        // Moving a piece to an empty square
         else if (pieces[x][y].empty && pieceSelected) {
             if (possibleMoves && possibleMoves.some(move => move[0] === x && move[1] === y)) {
                 unhighlightMoves()
@@ -71,14 +79,49 @@ export default function Chessboard(){
                 whiteMove = !whiteMove
                 selectPiece(null)
                 setPossibleMoves(null)
+            }  
+            // Click an uncapturable square
+            else if (possibleMoves && possibleMoves.every(move => move[0] != x || move[1] != y)) {
+                unhighlightMoves()
+                setPieces(prevPieces => {
+                    const newPieces = prevPieces.map((row, rowIndex) =>
+                        row.map((piece, colIndex) => {
+                            if (rowIndex === pieceSelected[0] && colIndex === pieceSelected[1]) {
+                                return deselectPiece(pieces[pieceSelected[0]][pieceSelected[1]])
+                            }
+                            return piece
+                        })
+                    )
+                    return newPieces
+                })
+                selectPiece(null)
+                setPossibleMoves(null)
             }
         } 
-        // Capturing a piece                    TODO: Check if it's a valid move
+        // Capturing a piece
         else if (pieces[x][y].empty == false && whiteMove != pieces[x][y].isWhite && pieceSelected) {
             if (possibleMoves && possibleMoves.some(move => move[0] === x && move[1] === y)) {
                 unhighlightMoves()
                 movePiece(pieceSelected, [x,y])
                 whiteMove = !whiteMove
+                selectPiece(null)
+                setPossibleMoves(null)
+            }
+
+            // Clicks an uncapturable piece
+            else if (possibleMoves && possibleMoves.every(move => move[0] != x || move[1] != y)) {
+                unhighlightMoves()
+                setPieces(prevPieces => {
+                    const newPieces = prevPieces.map((row, rowIndex) =>
+                        row.map((piece, colIndex) => {
+                            if (rowIndex === pieceSelected[0] && colIndex === pieceSelected[1]) {
+                                return deselectPiece(pieces[pieceSelected[0]][pieceSelected[1]])
+                            }
+                            return piece
+                        })
+                    )
+                    return newPieces
+                })
                 selectPiece(null)
                 setPossibleMoves(null)
             }
@@ -205,6 +248,35 @@ const unhighlightPiece = (piece: Piece) : Piece => {
     return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: false, empty: piece.empty});
 }
 
+const isAttacked = (pieces: Piece[][], x: number, y: number, isWhite: boolean): boolean => {
+    console.log("checking attacked")
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            const piece : Piece = pieces[i][j]
+            if (piece && piece.isWhite !== isWhite) {
+                const moves = calculatePossibleCaptures(pieces, piece, i, j);
+                if (moves.some(move => move[0] === x && move[1] === y)) {
+                    console.log("can't go to: " + x + ", " + y + "  because of " + piece.name)
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+const removeChecks = (moves: number[][], pieces: Piece[][], piece: Piece, x: number, y: number) => {
+    if(piece.name == "king") {
+        for (let i = 0; i < moves.length; i++) {
+            console.log("checking move: " + moves[i][0] + moves[i][1])
+            if(isAttacked(pieces, moves[i][0], moves[i][1], piece.isWhite)) {
+                moves.splice(i,1);
+                i--
+            }
+        }
+    }
+}
+
 const calculatePossibleMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
     switch (piece.name) {
         case "pawn":
@@ -219,234 +291,33 @@ const calculatePossibleMoves = (pieces: (Piece)[][], piece: Piece, x: number, y:
             return queenMoves(pieces, piece, x, y);
         case "king":
             return kingMoves(pieces, piece, x, y);
+        case "":
+            return [];
         default:
             console.error("Unknown piece type:", piece?.name);
             return [];
     }
 }
 
-const pawnMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
-    const moves: number[][] = [];
-    const direction = piece.isWhite ? 1 : -1
-        
-    // Check if it can go one spot forward
-    if(pieces[x+direction][y].empty) {
-        moves.push([x+direction,y])
-    }
 
-    // Check if it can double move
-    if (piece.hasMoved == false && moves.length == 1) {
-        if (pieces[x+(direction*2)][y].empty) {
-            moves.push([x+(direction*2),y])
-        }
+const calculatePossibleCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
+    switch (piece.name) {
+        case "pawn":
+            return pawnCaptures(pieces, piece, x, y);
+        case "rook":
+            return rookCaptures(pieces, piece, x, y);
+        case "bishop":
+            return bishopCaptures(pieces, piece, x, y);
+        case "knight":
+            return knightCaptures(pieces, piece, x, y);
+        case "queen":
+            return queenCaptures(pieces, piece, x, y);
+        case "king":
+            return kingCaptures(pieces, piece, x, y);
+        case "":
+            return [];
+        default:
+            console.error("Unknown piece type:", piece?.name);
+            return [];
     }
-
-    // Check if it can capture up to the left
-    if(y > 0 && pieces[x+direction][y-1].empty == false && pieces[x+direction][y-1].isWhite != piece.isWhite) {
-        moves.push([x+direction,y-1])
-    }
-
-    // Check if it can capture up to the right
-    if(y < 7 && pieces[x+direction][y+1].empty == false && pieces[x+direction][y+1].isWhite != piece.isWhite) {
-        moves.push([x+direction,y+1])
-    }
-
-    return moves
 }
-
-const rookMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
-    const moves: number[][] = []
-    let flag : boolean = true
-
-    // Check for up direction
-    let distance = 1
-    while(flag && distance <= (7-x)) {
-        if (pieces[x+distance][y].empty) {
-            moves.push([x+distance,y])
-        } else {
-            if (pieces[x+distance][y].isWhite != piece.isWhite) {
-                flag = false
-                moves.push([x+distance,y])
-            } else {
-                flag = false
-            }
-        }
-        distance++
-    }
-
-    // Check for down direction
-    flag = true
-    distance = 1
-    while(flag && distance <= (x)) {
-        if (pieces[x-distance][y].empty) {
-            moves.push([x-distance,y])
-        } else {
-            if (pieces[x-distance][y].isWhite != piece.isWhite) {
-                flag = false
-                moves.push([x-distance,y])
-            } else {
-                flag = false
-            }
-        }
-        distance++
-    }
-
-    // Check for right direction
-    flag = true
-    distance = 1
-    while(flag && distance <= (7-y)) {
-        if (pieces[x][y+distance].empty) {
-            moves.push([x,y+distance])
-        } else {
-            if (pieces[x][y+distance].isWhite != piece.isWhite) {
-                flag = false
-                moves.push([x,y+distance])
-            } else {
-                flag = false
-            }
-        }
-        distance++
-    }
-
-    // Check for left direction
-    flag = true
-    distance = 1
-    while(flag && distance <= (y)) {
-        if (pieces[x][y-distance].empty) {
-            moves.push([x,y-distance])
-        } else {
-            if (pieces[x][y-distance].isWhite != piece.isWhite) {
-                flag = false
-                moves.push([x,y-distance])
-            } else {
-                flag = false
-            }
-        }
-        distance++
-    }
-
-
-    return moves
-}
-
-const bishopMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
-    const moves: number[][] = []
-    let flag : boolean = true
-
-    // Check for up-right direction
-    let distance = 1
-    while(flag && distance <= (7-x) && distance <= (7-y)) {
-        if (pieces[x+distance][y+distance].empty) {
-            moves.push([x+distance,y+distance])
-        } else {
-            if (pieces[x+distance][y+distance].isWhite != piece.isWhite) {
-                flag = false
-                moves.push([x+distance,y+distance])
-            } else {
-                flag = false
-            }
-        }
-        distance++
-    }
-
-    // Check for down-right direction
-    flag = true
-    distance = 1
-    while(flag && distance <= (x) && distance <= (7-y)) {
-        if (pieces[x-distance][y+distance].empty) {
-            moves.push([x-distance,y+distance])
-        } else {
-            if (pieces[x-distance][y+distance].isWhite != piece.isWhite) {
-                flag = false
-                moves.push([x-distance,y+distance])
-            } else {
-                flag = false
-            }
-        }
-        distance++
-    }
-
-    // Check for up-left direction
-    flag = true
-    distance = 1
-    while(flag && distance <= (7-x) && distance <= (y)) {
-        if (pieces[x+distance][y-distance].empty) {
-            moves.push([x+distance,y-distance])
-        } else {
-            if (pieces[x+distance][y-distance].isWhite != piece.isWhite) {
-                flag = false
-                moves.push([x+distance,y-distance])
-            } else {
-                flag = false
-            }
-        }
-        distance++
-    }
-
-    // Check for down-left direction
-    flag = true
-    distance = 1
-    while(flag && distance <= x && distance <= (y)) {
-        if (pieces[x-distance][y-distance].empty) {
-            moves.push([x-distance,y-distance])
-        } else {
-            if (pieces[x-distance][y-distance].isWhite != piece.isWhite) {
-                flag = false
-                moves.push([x-distance,y-distance])
-            } else {
-                flag = false
-            }
-        }
-        distance++
-    }
-    return moves
-}
-
-const knightMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
-    const moves: number[][] = []
-    for (let i = -2; i <= 2; i++) {
-        for (let j = -2; j <= 2; j++) {
-            if (i != 0 && j != 0 && Math.abs(i) != Math.abs(j)) {
-                if(x + i <= 7 && x + i >= 0 && y + j <= 7 && y + j >= 0) {
-                    if (pieces[x+i][y+j].empty) {
-                        moves.push([x+i,y+j])
-                    } else {
-                        if (pieces[x+i][y+j].isWhite != piece.isWhite) {
-                            moves.push([x+i,y+j])
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return moves
-}
-
-const queenMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
-    const rookMovesList = rookMoves(pieces, piece, x, y)
-    const bishopMovesList = bishopMoves(pieces, piece, x, y)
-    return [...rookMovesList, ...bishopMovesList]
-}
-
-const kingMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
-    // TODO: Moving into check and castling
-    const moves: number[][] = []
-    
-    for (let i = -1; i <= 1; i++) {
-        for (let j = -1; j <= 1; j++) {
-            if(x + i <= 7 && x + i >= 0 && y + j <= 7 && y + j >= 0) {
-                if (pieces[x+i][y+j].empty) {
-                    moves.push([x+i,y+j])
-                } else {
-                    if (pieces[x+i][y+j].isWhite != piece.isWhite) {
-                        moves.push([x+i,y+j])
-                    }
-                }
-            }
-        }
-    }
-
-
-    return moves
-}
-
