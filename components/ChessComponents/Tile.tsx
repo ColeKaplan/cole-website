@@ -25,7 +25,6 @@ export default function Tile(props: any) {
 
     // PROMOTION
     const image = props.piece.promotionImage != "" ? props.piece.promotionImage : props.piece.image
-    // const image = props.piece.image
 
 
 

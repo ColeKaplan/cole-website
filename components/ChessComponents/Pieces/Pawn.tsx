@@ -15,9 +15,7 @@ export const pawnMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: numbe
             moves.push([x+(direction*2),y])
         }
     }
-    console.log("here")
-    console.log(enPoissantSquare)
-    console.log((x+direction) + "    " + (y-1))
+
     // Check if it can capture up to the left
     if(y > 0 && (pieces[x+direction][y-1].empty == false && pieces[x+direction][y-1].isWhite != piece.isWhite) || (enPoissantSquare != null && x+direction == enPoissantSquare[0] && y-1 == enPoissantSquare[1])) {
         moves.push([x+direction,y-1])

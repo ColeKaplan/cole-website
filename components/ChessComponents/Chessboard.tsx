@@ -8,13 +8,13 @@ import { bishopMoves, bishopCaptures } from './Pieces/Bishop'
 import { rookMoves, rookCaptures } from './Pieces/Rook'
 import { queenMoves, queenCaptures } from './Pieces/Queen'
 import { kingMoves, kingCaptures } from './Pieces/King'
+import { setupFsCheck } from 'next/dist/server/lib/router-utils/filesystem'
 
 
 
 /*
 MAJOR TODOS FOR CHESS
 
-2) En Poissant
 3) Checkmate   -    For Checkmate and Stalemate, if moves = 0 for all pieces then only difference is if king is in check
 4) Stalemate
 
@@ -43,6 +43,8 @@ export default function Chessboard(){
     const [possibleMoves, setPossibleMoves] = useState<number[][] | null>()
     const [inPromotion, setPromotion] = useState<number[] | null>(null)
     const [enPoissantSquare, setEnPoissantSquare] = useState<number[] | null>(null) // The square that can be captured by en poissant
+    const [checkmate, setCheckmate] = useState<boolean>(false)
+    const [stalemate, setStalemate] = useState<boolean>(false)
 
     const handleOnClick = (x: number, y: number) => {
 
@@ -158,6 +160,8 @@ export default function Chessboard(){
     }
 
     const movePiece = (from: number[], to: number[]) => {
+
+        // Check for en poissant take
         if(enPoissantSquare != null && to[0] == enPoissantSquare[0] && to[1] == enPoissantSquare[1]) {
             setPieces(prevPieces => {
                 const newPieces = prevPieces.map((row, rowIndex) =>
@@ -171,6 +175,8 @@ export default function Chessboard(){
                 return newPieces
             })
         }
+
+        // Normal movement
         setPieces(prevPieces => {
             const newPieces = prevPieces.map((row, rowIndex) =>
                 row.map((piece, colIndex) => {
@@ -183,6 +189,9 @@ export default function Chessboard(){
                     return piece
                 })
             )
+
+            // Check for checkmate then finish the move
+            checkCheckmate(newPieces, enPoissantSquare, setCheckmate, setStalemate)
             return newPieces
         })
         // Set promotion variable when pawn needs to be promoted
@@ -196,7 +205,8 @@ export default function Chessboard(){
         } else if(enPoissantSquare != null) {
             setEnPoissantSquare(null)
         }
-        
+
+    // End movePiece
     }
 
     const unhighlightMoves = () => {
@@ -217,7 +227,6 @@ export default function Chessboard(){
         if (pieces[x][y].promotionImage == "" || inPromotion == null) {
             return;
         }
-        console.log("here")
         let replacementPiece : Piece | null = null
         if(x == 4 && y == 0) {
             if(pieces[inPromotion[0]][inPromotion[1]].isWhite) {
@@ -325,8 +334,14 @@ export default function Chessboard(){
     }, [pieces])
 
     return (
-        <div id='chessboard' className=''>
-            {board}
+        <div>
+            <div>
+                {checkmate && <div>Checkmate</div>}
+                {stalemate && <div>Stalemate</div>}
+            </div>
+            <div id='chessboard' className=''>
+                {board}
+            </div>
         </div>
     );
 }
@@ -406,7 +421,7 @@ export const isAttacked = (pieces: Piece[][], x: number, y: number, isWhite: boo
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             const piece : Piece = pieces[i][j]
-            if (piece && piece.isWhite !== isWhite) {
+            if (piece.empty == false && piece.isWhite !== isWhite) {
                 const moves = calculatePossibleCaptures(pieces, piece, i, j, enPoissantSquare);
                 if (moves.some(move => move[0] === x && move[1] === y)) {
                     return true;
@@ -440,6 +455,21 @@ const removeChecks = (moves: number[][], pieces: Piece[][], piece: Piece, x: num
             }
         }
     } else {
+
+        // first find the king at position k,j
+        let looking = true;
+        let kingPosition : number[] = [8,8]
+        for(let k = 0; k <= 7; k++) {
+            if(looking){
+                for(let j = 0; j <= 7; j++) {
+                    if(looking && pieces[k][j].name == "king" && pieces[k][j].isWhite == piece.isWhite) {
+                        kingPosition = [k,j]
+                        looking = false;
+                    }
+                }
+            }
+        }
+
         for (let i = 0; i < moves.length; i++) {
             const newPieces = pieces.map((row, rowIndex) =>
                 row.map((piece, colIndex) => {
@@ -452,19 +482,11 @@ const removeChecks = (moves: number[][], pieces: Piece[][], piece: Piece, x: num
                     return piece
                 })
             )
-            let looking = true;
-            for(let k = 0; k <= 7; k++) {
-                if(looking){
-                    for(let j = 0; j <= 7; j++) {
-                        if(looking && pieces[k][j].name == "king" && pieces[k][j].isWhite == piece.isWhite) {
-                            if (isAttacked(newPieces, k, j, piece.isWhite, null)) {
-                                moves.splice(i,1);
-                                i--;
-                                looking = false;
-                            }
-                        }
-                    }
-                }
+            
+            if (isAttacked(newPieces, kingPosition[0], kingPosition[1], piece.isWhite, null)) {
+                moves.splice(i,1);
+                i--;
+                
             }
         }
     }
@@ -513,4 +535,44 @@ const calculatePossibleCaptures = (pieces: (Piece)[][], piece: Piece, x: number,
             console.error("Unknown piece type:", piece?.name);
             return [];
     }
+}
+
+const checkCheckmate = (pieces: Piece[][], enPoissantSquare: number[] | null, setCheckmate: Function, setStalemate: Function) : boolean => {
+    let moves : number[][] | null = null
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            const piece : Piece = pieces[i][j]
+            if (piece.isWhite == whiteMove) {
+                moves = calculatePossibleMoves(pieces, piece, i, j, enPoissantSquare)
+                removeChecks(moves, pieces, piece, i, j)
+                if (moves != null && moves.length != 0) {
+                    return false
+                }
+            }
+        }
+    }
+    let looking = true
+    let inCheck = false
+    
+    for(let k = 0; k <= 7; k++) {
+        if(looking){
+            for(let j = 0; j <= 7; j++) {
+                if(looking && pieces[k][j].name == "king" && pieces[k][j].isWhite == whiteMove) {
+                    if (isAttacked(pieces, k, j, whiteMove, null)) {
+                        inCheck = true
+                        looking = false
+                    }
+                }
+            }
+        }
+    }
+
+    if(inCheck) {
+        setCheckmate(true)
+        return true
+    } else {
+        setStalemate(true)
+        return false
+    }
+
 }
