@@ -8,7 +8,18 @@ import { bishopMoves, bishopCaptures } from './Pieces/Bishop'
 import { rookMoves, rookCaptures } from './Pieces/Rook'
 import { queenMoves, queenCaptures } from './Pieces/Queen'
 import { kingMoves, kingCaptures } from './Pieces/King'
-import { PiCheckSquareOffset, PiDeviceMobileSpeaker } from 'react-icons/pi'
+
+
+
+/*
+MAJOR TODOS FOR CHESS
+
+2) En Poissant
+3) Checkmate   -    For Checkmate and Stalemate, if moves = 0 for all pieces then only difference is if king is in check
+4) Stalemate
+
+
+*/
 
 
 let whiteMove = true
@@ -21,17 +32,24 @@ export interface Piece {
     highlighted: boolean
     hasMoved: boolean
     empty: boolean
+    promotionImage: string// TODO: implement promotion with this
 }
 
 export default function Chessboard(){
 
-    // const [pieces, setPieces] = useState<Piece[]>(initializePieces());
     const [board, setBoard] = useState([])
     const [pieces, setPieces] = useState<(Piece)[][]>(initializePieces())
     const [pieceSelected, selectPiece] = useState<number[] | null>(null)
     const [possibleMoves, setPossibleMoves] = useState<number[][] | null>()
+    const [inPromotion, setPromotion] = useState<number[] | null>(null)
+    const [enPoissantSquare, setEnPoissantSquare] = useState<number[] | null>(null) // The square that can be captured by en poissant
 
     const handleOnClick = (x: number, y: number) => {
+
+        if(inPromotion != null) {
+            handlePromotion(x,y)
+            return
+        }
 
         // Selecting a new piece to move
         if(pieces[x][y].empty == false && whiteMove == pieces[x][y].isWhite) {
@@ -52,7 +70,7 @@ export default function Chessboard(){
 
             unhighlightMoves()
             let moves : number[][] | null = null
-            moves = calculatePossibleMoves(pieces, pieces[x][y], x, y)
+            moves = calculatePossibleMoves(pieces, pieces[x][y], x, y, enPoissantSquare)
             removeChecks(moves, pieces, pieces[x][y], x, y)
             setPossibleMoves(moves)
 
@@ -140,10 +158,23 @@ export default function Chessboard(){
     }
 
     const movePiece = (from: number[], to: number[]) => {
+        if(enPoissantSquare != null && to[0] == enPoissantSquare[0] && to[1] == enPoissantSquare[1]) {
+            setPieces(prevPieces => {
+                const newPieces = prevPieces.map((row, rowIndex) =>
+                    row.map((piece, colIndex) => {
+                        if (rowIndex === from[0] && colIndex === to[1]) {
+                            return emptyPiece()
+                        }
+                        return piece
+                    })
+                )
+                return newPieces
+            })
+        }
         setPieces(prevPieces => {
             const newPieces = prevPieces.map((row, rowIndex) =>
                 row.map((piece, colIndex) => {
-                    if (rowIndex === from[0] && colIndex === from[1] && piece) {
+                    if (rowIndex === from[0] && colIndex === from[1]) {
                         return emptyPiece()
                     }
                     if (rowIndex === to[0] && colIndex === to[1]) {
@@ -154,6 +185,18 @@ export default function Chessboard(){
             )
             return newPieces
         })
+        // Set promotion variable when pawn needs to be promoted
+        if((to[0] == 7 || to[0] == 0) && pieces[from[0]][from[1]].name == "pawn") {
+            setPromotion(to)
+        }
+
+        // Set en poissant square when en poissant is possible
+        if(pieces[from[0]][from[1]].name == "pawn" && pieces[from[0]][from[1]].hasMoved == false && Math.abs(to[0] - from[0]) == 2) {
+            setEnPoissantSquare([from[0] + ((to[0] - from[0]) / 2), from[1]])
+        } else if(enPoissantSquare != null) {
+            setEnPoissantSquare(null)
+        }
+        
     }
 
     const unhighlightMoves = () => {
@@ -170,6 +213,106 @@ export default function Chessboard(){
         })
     }
 
+    const handlePromotion = (x: number, y: number) => {
+        if (pieces[x][y].promotionImage == "" || inPromotion == null) {
+            return;
+        }
+        console.log("here")
+        let replacementPiece : Piece | null = null
+        if(x == 4 && y == 0) {
+            if(pieces[inPromotion[0]][inPromotion[1]].isWhite) {
+                replacementPiece = newPiece("queen", true, "/games/Chess/whitequeen.png")
+            } else {
+                replacementPiece = newPiece("queen", false, "/games/Chess/blackqueen.png")
+            }
+        } else if(x == 3 && y == 0) {
+            if(pieces[inPromotion[0]][inPromotion[1]].isWhite) {
+                replacementPiece = newPiece("knight", true, "/games/Chess/whitenight.png")
+            } else {
+                replacementPiece = newPiece("knight", false, "/games/Chess/blacknight.png")
+            }
+        } else if(x == 4 && y == 7) {
+            if(pieces[inPromotion[0]][inPromotion[1]].isWhite) {
+                replacementPiece = newPiece("rook", true, "/games/Chess/whiterook.png")
+            } else {
+                replacementPiece = newPiece("rook", false, "/games/Chess/blackrook.png")
+            }
+        } else if(x == 3 && y == 7) {
+            if(pieces[inPromotion[0]][inPromotion[1]].isWhite) {
+                replacementPiece = newPiece("bishop", true, "/games/Chess/whitebishop.png")
+            } else {
+                replacementPiece = newPiece("bishop", false, "/games/Chess/blackbishop.png")
+            }
+        }
+        if (replacementPiece != null) {
+            setPieces(prevPieces => {
+                const newPieces = prevPieces.map((row, rowIndex) =>
+                    row.map((piece, colIndex) => {
+                        if (rowIndex === inPromotion[0] && colIndex === inPromotion[1] && piece) {
+                            return replacementPiece
+                        }
+                        return piece
+                    })
+                )
+                return newPieces
+            })
+            setPromotion(null)
+        }
+    }
+
+    // UseEffect for updating the promotion selection pieces
+    useEffect (() => {
+        if(inPromotion != null) {
+            setPieces(prevPieces => {
+                const newPieces = prevPieces.map((row, rowIndex) =>
+                    row.map((piece, colIndex) => {
+                        if (rowIndex === 4 && colIndex === 0 && piece) {
+                            if (pieces[inPromotion[0]][inPromotion[1]].isWhite) {
+                                return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: false, promotionImage: "/games/Chess/whitequeen.png"});
+                            } else {
+                                return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: false, promotionImage: "/games/Chess/blackqueen.png"});
+                            }
+                        } else if (rowIndex === 3 && colIndex === 0 && piece) {
+                            if (pieces[inPromotion[0]][inPromotion[1]].isWhite) {
+                                return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: false, promotionImage: "/games/Chess/whitenight.png"});
+                            } else {
+                                return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: false, promotionImage: "/games/Chess/blacknight.png"});
+                            }
+                        } else if (rowIndex === 4 && colIndex === 7 && piece) {
+                            if (pieces[inPromotion[0]][inPromotion[1]].isWhite) {
+                                return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: false, promotionImage: "/games/Chess/whiterook.png"});
+                            } else {
+                                return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: false, promotionImage: "/games/Chess/blackrook.png"});
+                            }
+                        } else if (rowIndex === 3 && colIndex === 7 && piece) {
+                            if (pieces[inPromotion[0]][inPromotion[1]].isWhite) {
+                                return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: false, promotionImage: "/games/Chess/whitebishop.png"});
+                            } else {
+                                return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: false, promotionImage: "/games/Chess/blackbishop.png"});
+                            }
+                        }
+                        return piece
+                    })
+                )
+                return newPieces
+            })
+        } else {
+            setPieces(prevPieces => {
+                const newPieces = prevPieces.map((row, rowIndex) =>
+                    row.map((piece, colIndex) => {
+                        if (rowIndex === 4 && colIndex === 0 || rowIndex === 3 && colIndex === 0 || rowIndex === 4 && colIndex === 7 || rowIndex === 3 && colIndex === 7) {
+                            const isEmpty = (piece.image == "")
+                            return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: false, empty: isEmpty, promotionImage: ""});
+                        }
+                        return piece
+                    })
+                )
+                return newPieces
+            })
+        }
+    }, [inPromotion])
+
+    // UseEffect for any time pieces change to update the tiles
     useEffect(() => {
         let newBoard: any = []
         for (let i = 7; i >= 0; i--) {
@@ -238,33 +381,33 @@ const initializePieces = (): (Piece)[][] => {
 
 
 const emptyPiece = () : Piece => {
-    return ({name: "", isWhite: true, image: "", selected: false, hasMoved: false, highlighted: false, empty: true})
+    return ({name: "", isWhite: true, image: "", selected: false, hasMoved: false, highlighted: false, empty: true, promotionImage: ""})
 }
 const newPiece = (name: string, isWhite: boolean, image: string) : Piece => {
-    return ({name: name, isWhite: isWhite, image: image, selected: false, hasMoved: false, highlighted: false, empty: false});
+    return ({name: name, isWhite: isWhite, image: image, selected: false, hasMoved: false, highlighted: false, empty: false, promotionImage: ""});
 }
 const selectNewPiece = (piece: Piece) : Piece => {
-    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: true, hasMoved: piece.hasMoved, highlighted: false, empty: false});
+    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: true, hasMoved: piece.hasMoved, highlighted: false, empty: false, promotionImage: ""});
 }
 const deselectPiece = (piece: (Piece)) : Piece => {
-    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: false, hasMoved: piece.hasMoved, highlighted: false, empty: false});
+    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: false, hasMoved: piece.hasMoved, highlighted: false, empty: false, promotionImage: ""});
 }
 const deselectAndMove  = (piece: (Piece)) : Piece => {
-    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: false, hasMoved: true, highlighted: false, empty: false});
+    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: false, hasMoved: true, highlighted: false, empty: false, promotionImage: ""});
 }
 const highlightPiece = (piece: Piece) : Piece => {
-    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: piece.empty});
+    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: true, empty: piece.empty, promotionImage: ""});
 }
 const unhighlightPiece = (piece: Piece) : Piece => {
-    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: false, empty: piece.empty});
+    return ({name: piece.name, isWhite: piece.isWhite, image: piece.image, selected: piece.selected, hasMoved: piece.hasMoved, highlighted: false, empty: piece.empty, promotionImage: ""});
 }
 
-export const isAttacked = (pieces: Piece[][], x: number, y: number, isWhite: boolean): boolean => {
+export const isAttacked = (pieces: Piece[][], x: number, y: number, isWhite: boolean, enPoissantSquare: number[] | null): boolean => {
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             const piece : Piece = pieces[i][j]
             if (piece && piece.isWhite !== isWhite) {
-                const moves = calculatePossibleCaptures(pieces, piece, i, j);
+                const moves = calculatePossibleCaptures(pieces, piece, i, j, enPoissantSquare);
                 if (moves.some(move => move[0] === x && move[1] === y)) {
                     return true;
                 }
@@ -274,10 +417,24 @@ export const isAttacked = (pieces: Piece[][], x: number, y: number, isWhite: boo
     return false;
 }
 
+
+// Strategy is to move the piece, then search the board for it's king and see if the king is under attack. If so, don't allow that move
+// This accounts for both revealing the king into check, and being forced to help when the king is in check
 const removeChecks = (moves: number[][], pieces: Piece[][], piece: Piece, x: number, y: number) => {
     if(piece.name == "king") {
         for (let i = 0; i < moves.length; i++) {
-            if(isAttacked(pieces, moves[i][0], moves[i][1], piece.isWhite)) {
+            const newPieces = pieces.map((row, rowIndex) =>
+                row.map((piece, colIndex) => {
+                    if (rowIndex === x && colIndex === y) {
+                        return emptyPiece()
+                    }
+                    if (rowIndex === moves[i][0] && colIndex === moves[i][1]) {
+                        return deselectAndMove(pieces[x][y])
+                    }
+                    return piece
+                })
+            )
+            if(isAttacked(newPieces, moves[i][0], moves[i][1], piece.isWhite, null)) {
                 moves.splice(i,1);
                 i--
             }
@@ -300,7 +457,7 @@ const removeChecks = (moves: number[][], pieces: Piece[][], piece: Piece, x: num
                 if(looking){
                     for(let j = 0; j <= 7; j++) {
                         if(looking && pieces[k][j].name == "king" && pieces[k][j].isWhite == piece.isWhite) {
-                            if (isAttacked(newPieces, k, j, piece.isWhite)) {
+                            if (isAttacked(newPieces, k, j, piece.isWhite, null)) {
                                 moves.splice(i,1);
                                 i--;
                                 looking = false;
@@ -313,10 +470,10 @@ const removeChecks = (moves: number[][], pieces: Piece[][], piece: Piece, x: num
     }
 }
 
-const calculatePossibleMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
+const calculatePossibleMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number, enPoissantSquare: number[] | null): number[][] => {
     switch (piece.name) {
         case "pawn":
-            return pawnMoves(pieces, piece, x, y);
+            return pawnMoves(pieces, piece, x, y, enPoissantSquare);
         case "rook":
             return rookMoves(pieces, piece, x, y);
         case "bishop":
@@ -336,7 +493,7 @@ const calculatePossibleMoves = (pieces: (Piece)[][], piece: Piece, x: number, y:
 }
 
 
-const calculatePossibleCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
+const calculatePossibleCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: number, enPoissantSquare: number[] | null): number[][] => {
     switch (piece.name) {
         case "pawn":
             return pawnCaptures(pieces, piece, x, y);

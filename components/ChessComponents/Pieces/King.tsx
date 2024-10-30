@@ -19,16 +19,16 @@ export const kingMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: numbe
     }
 
     // Castling
-    if (piece.hasMoved == false && isAttacked(pieces, x, y, piece.isWhite) == false) {
+    if (piece.hasMoved == false && isAttacked(pieces, x, y, piece.isWhite, null) == false) {
          // Check right
-         if (pieces[x][y+1].empty && isAttacked(pieces, x, y+1, piece.isWhite) == false && pieces[x][y+2].empty && isAttacked(pieces, x, y+2, piece.isWhite) == false) {
+         if (pieces[x][y+1].empty && isAttacked(pieces, x, y+1, piece.isWhite, null) == false && pieces[x][y+2].empty && isAttacked(pieces, x, y+2, piece.isWhite, null) == false) {
             if (pieces[x][y+3].name == "rook" && pieces[x][y+3].hasMoved == false) {
                 moves.push([x,y+2])
             }
          }
 
          // Check left
-         if (pieces[x][y-1].empty && isAttacked(pieces, x, y-1, piece.isWhite) == false && pieces[x][y-2].empty && isAttacked(pieces, x, y-2, piece.isWhite) == false && pieces[x][y-3].empty) {
+         if (pieces[x][y-1].empty && isAttacked(pieces, x, y-1, piece.isWhite, null) == false && pieces[x][y-2].empty && isAttacked(pieces, x, y-2, piece.isWhite, null) == false && pieces[x][y-3].empty) {
             if (pieces[x][y-4].name == "rook" && pieces[x][y-4].hasMoved == false) {
                 moves.push([x,y-2])
             }

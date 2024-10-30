@@ -1,6 +1,6 @@
 import { Piece } from "../Chessboard";
 
-export const pawnMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number): number[][] => {
+export const pawnMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: number, enPoissantSquare: number[] | null): number[][] => {
     const moves: number[][] = [];
     const direction = piece.isWhite ? 1 : -1
         
@@ -15,14 +15,16 @@ export const pawnMoves = (pieces: (Piece)[][], piece: Piece, x: number, y: numbe
             moves.push([x+(direction*2),y])
         }
     }
-
+    console.log("here")
+    console.log(enPoissantSquare)
+    console.log((x+direction) + "    " + (y-1))
     // Check if it can capture up to the left
-    if(y > 0 && pieces[x+direction][y-1].empty == false && pieces[x+direction][y-1].isWhite != piece.isWhite) {
+    if(y > 0 && (pieces[x+direction][y-1].empty == false && pieces[x+direction][y-1].isWhite != piece.isWhite) || (enPoissantSquare != null && x+direction == enPoissantSquare[0] && y-1 == enPoissantSquare[1])) {
         moves.push([x+direction,y-1])
     }
 
     // Check if it can capture up to the right
-    if(y < 7 && pieces[x+direction][y+1].empty == false && pieces[x+direction][y+1].isWhite != piece.isWhite) {
+    if(y < 7 && (pieces[x+direction][y+1].empty == false && pieces[x+direction][y+1].isWhite != piece.isWhite) || (enPoissantSquare != null && x+direction == enPoissantSquare[0] && y+1 == enPoissantSquare[1])) {
         moves.push([x+direction,y+1])
     }
 

@@ -23,12 +23,16 @@ export default function Tile(props: any) {
         }
     }
 
+    // PROMOTION
+    const image = props.piece.promotionImage != "" ? props.piece.promotionImage : props.piece.image
+    // const image = props.piece.image
+
 
 
     return (<div className={color} onClick={props.onClick}>
         <div className={highlightedColor}>
             {/* {props.x}, {props.y} */}
-            {props.piece.empty == false && <Image src={props.piece.image} alt='chess piece' className='image z-20' width={60} height={60} draggable="false" />}
+            {props.piece.empty == false && <Image src={image} alt='chess piece' className='image z-20' width={60} height={60} draggable="false" />}
         </div>
     </div>);
 }
