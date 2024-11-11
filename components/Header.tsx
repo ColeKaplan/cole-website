@@ -29,6 +29,8 @@ function Header() {
 
   const pathname = usePathname()
 
+  const hoverColor = '#A0BEE6'
+
 
   return (
     <>
@@ -46,6 +48,8 @@ function Header() {
           <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
           <p>|</p>
           <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
+          <p>|</p>
+          <Link href="/games/Chess" className={`hover:text-[#A0BEE6] ${pathname === '/games/Chess' ? 'active-link' : ''} ${roboto.className}`}>Chess</Link>
         </div>
         <div className='2xl:hidden xl:hidden lg:hidden md:flex sm:flex justify-end'>
           <Popover>

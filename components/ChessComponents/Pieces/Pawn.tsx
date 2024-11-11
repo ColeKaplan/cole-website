@@ -42,3 +42,14 @@ export const pawnCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: nu
 
     return moves
 }
+
+export const pawnValue = (pieces: Piece[][], piece: Piece, x: number, y: number): number => {
+    let value : number = 100;
+    let xval = Number(60 - Math.abs(6 * ((y) - 3.5)));
+    value += xval;
+
+    const yval = 40 * (6 - x);
+    value += yval;
+
+    return value
+}

@@ -8,21 +8,9 @@ import { bishopMoves, bishopCaptures } from './Pieces/Bishop'
 import { rookMoves, rookCaptures } from './Pieces/Rook'
 import { queenMoves, queenCaptures } from './Pieces/Queen'
 import { kingMoves, kingCaptures } from './Pieces/King'
-import { setupFsCheck } from 'next/dist/server/lib/router-utils/filesystem'
+import * as Switch from "@radix-ui/react-switch";
 
 
-
-/*
-MAJOR TODOS FOR CHESS
-
-3) Checkmate   -    For Checkmate and Stalemate, if moves = 0 for all pieces then only difference is if king is in check
-4) Stalemate
-
-
-*/
-
-
-let whiteMove = true
 
 export interface Piece {
     name: string
@@ -35,6 +23,8 @@ export interface Piece {
     promotionImage: string// TODO: implement promotion with this
 }
 
+let count = 0
+
 export default function Chessboard(){
 
     const [board, setBoard] = useState([])
@@ -45,6 +35,8 @@ export default function Chessboard(){
     const [enPoissantSquare, setEnPoissantSquare] = useState<number[] | null>(null) // The square that can be captured by en poissant
     const [checkmate, setCheckmate] = useState<boolean>(false)
     const [stalemate, setStalemate] = useState<boolean>(false)
+    const [isAI, setIsAI] = useState<boolean>(false) // For using the AI
+    const [whiteMove, setWhiteMove] = useState<boolean>(true)
 
     const handleOnClick = (x: number, y: number) => {
 
@@ -107,7 +99,7 @@ export default function Chessboard(){
                 }
 
                 movePiece(pieceSelected, [x,y])
-                whiteMove = !whiteMove
+                setWhiteMove(!whiteMove)
                 selectPiece(null)
                 setPossibleMoves(null)
             }  
@@ -134,7 +126,7 @@ export default function Chessboard(){
             if (possibleMoves && possibleMoves.some(move => move[0] === x && move[1] === y)) {
                 unhighlightMoves()
                 movePiece(pieceSelected, [x,y])
-                whiteMove = !whiteMove
+                setWhiteMove(!whiteMove)
                 selectPiece(null)
                 setPossibleMoves(null)
             }
@@ -191,7 +183,7 @@ export default function Chessboard(){
             )
 
             // Check for checkmate then finish the move
-            checkCheckmate(newPieces, enPoissantSquare, setCheckmate, setStalemate)
+            checkCheckmate(newPieces, enPoissantSquare, setCheckmate, setStalemate, !whiteMove)
             return newPieces
         })
         // Set promotion variable when pawn needs to be promoted
@@ -333,8 +325,60 @@ export default function Chessboard(){
         setBoard(newBoard); 
     }, [pieces])
 
+    // UseEffect for AI Move
+     useEffect(() => {
+        count += 1
+        if (!whiteMove && isAI && !checkmate && !stalemate) {
+            // AI's turn to move
+            let moves : number[][][] = []
+            let tempMoves : number[][] | null = null
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    const piece : Piece = pieces[i][j]
+                    if (piece.empty == false && piece.isWhite == whiteMove) {
+                        tempMoves = calculatePossibleMoves(pieces, piece, i, j, enPoissantSquare)
+                        removeChecks(tempMoves, pieces, piece, i, j)
+                        if (tempMoves && tempMoves.length > 0) {
+                            moves.push([[i, j], ...tempMoves])
+                        }
+                        
+                    }
+                }
+            }
+            // Moves now has every move AI could make
+            
+            if(moves.length == 0) {
+                console.log("no moves? for ai")
+            } else {
+
+                // Move first option you have
+                const xFrom : number = moves[0][0][0]
+                const yFrom : number = moves[0][0][1]
+                const pieceToMove : Piece = pieces[xFrom][yFrom]
+                const xTo : number = moves[0][1][0]
+                const yTo : number = moves[0][1][1]
+    
+                movePiece([xFrom, yFrom], [xTo,yTo])
+                setWhiteMove(!whiteMove)
+            }
+
+
+        }
+    }, [whiteMove])
+
     return (
         <div>
+            {/* The toggle for AI */}
+            <div className='flex justify-center pb-4'>
+                <label className="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" className="sr-only" checked={isAI} onChange={() => setIsAI(!isAI)} />
+                    <div className={`w-10 h-6 ${isAI ? 'bg-[#2c6af9]' : 'bg-gray-400'}  rounded-full shadow-inner`}></div>
+                    <div className={`absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform ${isAI ? 'transform translate-x-full' : ''}`}></div>
+                </label>
+                <span className="ml-2 text-black">{isAI ? "AI" : "2P"}</span>
+            </div>
+            
+
             <div>
                 {checkmate && <div>Checkmate</div>}
                 {stalemate && <div>Stalemate</div>}
@@ -537,8 +581,9 @@ const calculatePossibleCaptures = (pieces: (Piece)[][], piece: Piece, x: number,
     }
 }
 
-const checkCheckmate = (pieces: Piece[][], enPoissantSquare: number[] | null, setCheckmate: Function, setStalemate: Function) : boolean => {
+const checkCheckmate = (pieces: Piece[][], enPoissantSquare: number[] | null, setCheckmate: Function, setStalemate: Function, whiteMove: boolean) : boolean => {
     let moves : number[][] | null = null
+    console.log("checking if " + (whiteMove ? "white" : "black") + "  is in checkmate")
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             const piece : Piece = pieces[i][j]
@@ -546,6 +591,7 @@ const checkCheckmate = (pieces: Piece[][], enPoissantSquare: number[] | null, se
                 moves = calculatePossibleMoves(pieces, piece, i, j, enPoissantSquare)
                 removeChecks(moves, pieces, piece, i, j)
                 if (moves != null && moves.length != 0) {
+                    console.log("not in checkmate because of move: " + moves)
                     return false
                 }
             }
