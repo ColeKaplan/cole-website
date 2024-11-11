@@ -32,7 +32,7 @@ function Header() {
 
   return (
     <>
-    <header className='flex flex-col justify-between p-4'>
+    <header className='flex flex-col justify-between p-4 bg-[#d4edff]'>
       <Link href="/">
         <div>
           <h1 className={`text-4xl font-bold ${poppins.className}`}>Cole Kaplan</h1>
