@@ -15,9 +15,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#d4edff]  text-[#000000] overflow-auto sm:overflow-hidden`}>
+      <body className={`${inter.className} bg-slate-500 overscroll-none  text-[#000000]`}>
         <Header />
         {children}
         </body>

@@ -11,17 +11,6 @@ import { kingMoves, kingCaptures } from './Pieces/King'
 import { setupFsCheck } from 'next/dist/server/lib/router-utils/filesystem'
 
 
-
-/*
-MAJOR TODOS FOR CHESS
-
-3) Checkmate   -    For Checkmate and Stalemate, if moves = 0 for all pieces then only difference is if king is in check
-4) Stalemate
-
-
-*/
-
-
 let whiteMove = true
 
 export interface Piece {
@@ -333,11 +322,23 @@ export default function Chessboard(){
         setBoard(newBoard); 
     }, [pieces])
 
+    const restart = () => {
+        setPieces(initializePieces)
+        selectPiece(null)
+        setPromotion(null)
+        setEnPoissantSquare(null)
+        setCheckmate(false)
+        setStalemate(false)
+    }
+
     return (
         <div>
-            <div>
-                {checkmate && <div>Checkmate</div>}
-                {stalemate && <div>Stalemate</div>}
+            <div className='flex flex-col justify-center items-center text-white'>
+                {checkmate && <div className='pb-1'>Checkmate</div>}
+                {stalemate && <div className='pb-1'>Stalemate</div>}
+                {(checkmate || stalemate) && <div className='pb-2'>
+                    <button className="bg-[#022944] text-center px-1 rounded-md hover:bg-[#002742]" onClick={() => restart()}>Restart</button>
+                    </div>}
             </div>
             <div id='chessboard' className=''>
                 {board}
