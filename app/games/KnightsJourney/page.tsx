@@ -3,14 +3,15 @@ import React from 'react';
 
 export default function KnightsJourney(){
     return(
-        <div className='flex flex-col justify-items-start items-center h-auto pt-10 bg-slate-500'>
+        <div className='bg-slate-500 h-auto pt-10'>
             <div>
                 <UnityGame
                 build="/games/KnightsJourney/index.html"
                 title="Knight's Journey"
                 width="800"
-                widthPercent=".6"
-                height="10000"
+                widthPercent=".75"
+                heightPercent=".85"
+                ratio=".65"
                 />
             </div>
         </div>

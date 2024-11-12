@@ -9,7 +9,8 @@ export default function WalldOff(){
                 title="Walled Off"
                 width="800"
                 widthPercent=".75"
-                height="10000"
+                heightPercent=".95"
+                ratio=".65"
                 />
         </div>
     );

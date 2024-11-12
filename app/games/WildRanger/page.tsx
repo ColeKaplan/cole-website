@@ -10,7 +10,8 @@ export default function WildRanger(){
                 title="Wild Ranger"
                 width="1000"
                 widthPercent=".75"
-                height="10000"
+                heightPercent=".95"
+                ratio=".62"
                 />
             </div>
         </div>

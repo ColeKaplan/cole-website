@@ -46,13 +46,6 @@ export default function UnityGame(props: any) {
 
     }, [windowDimensions]);
 
-    const windowWidth = windowDimensions.width ? windowDimensions.width * props.widthPercent : props.width
-    const windowHeight = windowDimensions.height ? windowDimensions.height * props.heightPercent : props.height
-    const useWidth = windowWidth * props.ratio < windowHeight
-
-    const widthToUse = useWidth ? windowWidth : windowHeight / props.ratio
-    const heightToUse = useWidth ? windowWidth * props.ratio : windowHeight
-
 
     return(
         <div className="flex flex-col items-center justify-center overflow-x-hidden">

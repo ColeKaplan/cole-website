@@ -47,10 +47,10 @@ function Header() {
           <p>|</p>
           <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
         </div>
-        <div className='2xl:hidden xl:hidden lg:hidden md:flex sm:flex justify-end'>
+        <div className='lg:hidden justify-end'>
           <Popover>
             <PopoverTrigger><Bars3Icon className='h-6 w-6'></Bars3Icon></PopoverTrigger>
-            <PopoverContent className='flex justify-end max-w-fill w-25 2xl:hidden xl:hidden lg:hidden'>
+            <PopoverContent className='flex justify-end max-w-fill w-25 lg:hidden'>
               <div className='flex flex-col'>
                   <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
                   <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
