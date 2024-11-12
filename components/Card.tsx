@@ -12,7 +12,7 @@ function Card(props: any) {
 
     return (
         <a href={props.link}>
-        <button className='bg-[#bcd5f7] border-[#dd8b6b79] border-2 rounded-xl shadow-xl p-3 m-3 text-center
+        <button className='bg-[#bcd5f7] border-[#53647a] border-2 rounded-xl shadow-xl p-3 m-3 text-center
         active:bg-[#91b7e9] active:text-black hover:bg-[#A0BEE6] hover:text-black
          max-w-60 h-[17rem]'>
             <Image className='rounded-md mb-4 max-w-60 max-h-40' src={props.image} width={210} height={160} alt={`${props.title} picture`} priority={true}></Image>

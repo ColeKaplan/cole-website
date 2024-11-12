@@ -4,8 +4,8 @@ import SocialsLinks from '@/components/SocialsLinks';
 
 export default function Home(){
     return(
-        <div id="columnDivForPage" className='flex flex-col min-h-screen items-center py-10 bg-slate-500'>
-            <div className='flex justify-center items-center flex-col text-[#FFFFFF]'>
+        <div id="columnDivForPage" className='flex flex-col h-auto items-center pt-10 bg-slate-500'>
+            {/* <div className='flex justify-center items-center flex-col text-[#FFFFFF]'>
                 <h1 className='text-4xl font-bold text-[#FFFFFF] mb-4 text-center'>Welcome to my portfolio!</h1>
                 <div className='flex flex-col text-lg text-center p-5'>
                     <p>
@@ -15,7 +15,7 @@ export default function Home(){
                         As you can see below, I love to make games!
                     </p>
                 </div>
-            </div>
+            </div> */}
             <div className='hidden lg:block'>
                 <div id="cardsForGames" className='flex justify-center'>
                     <div>
@@ -36,14 +36,6 @@ export default function Home(){
                     </div>
                     <div>
                         <Card 
-                        link='/games/FishOnLand'
-                        image='/games/FishOnLand/FishImage.png'
-                        title="Fish on Land"
-                        text="Help a lost fish return to his home in the ocean"
-                        />
-                    </div>
-                    <div>
-                        <Card 
                         link='/games/WalldOff'
                         image='/games/WalldOff/WalldOffImage.png'
                         title="Walled Off"
@@ -51,7 +43,7 @@ export default function Home(){
                         />
                     </div>
                 </div>
-                {/* <div className='flex justify-center'>
+                <div className='flex justify-center'>
                     <div>
                         <Card 
                         link='/games/DrawingGame'
@@ -63,7 +55,7 @@ export default function Home(){
                     <div>
                         <Card 
                         link='/games/Chess'
-                        image='/games/KnightsJourney/KnightImage.png'
+                        image='/games/Chess/ChessImage.png'
                         title="Chess"
                         text="Play a friend or challenge our algorithm"
                         />
@@ -72,16 +64,16 @@ export default function Home(){
                         <Card 
                         link='/games/FishOnLand'
                         image='/games/FishOnLand/FishImage.png'
-                        title="Unknown"
-                        text="Maybe Android Studio class game"
+                        title="Fish on Land"
+                        text="Help a lost fish return to his home in the ocean"
                         />
                     </div>
-                </div> */}
+                </div>
             </div>
             <div className='flex mt-10'>
                 <h1 className='text-4xl text-center font-bold text-[#FFFFFF] mb-4 2xl:hidden xl:hidden lg:hidden'>Please increase screen size to view games</h1>
             </div>
-            <SocialsLinks/>
+            {/* <SocialsLinks/> */}
             
         </div>
     );

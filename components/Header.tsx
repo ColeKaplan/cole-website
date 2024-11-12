@@ -32,7 +32,7 @@ function Header() {
 
   return (
     <>
-    <header className='flex flex-col justify-between p-4'>
+    <header className='flex flex-col justify-between p-4 bg-[#d4edff]'>
       <Link href="/">
         <div>
           <h1 className={`text-4xl font-bold ${poppins.className}`}>Cole Kaplan</h1>
@@ -40,17 +40,17 @@ function Header() {
       </Link>
       <div className={`text-2xl flex justify-between ${roboto.className}`}>
         <Link href="/">
-          <p>Software Engineer & Game Designer @ Georgia Tech</p>
+          <p>Software Engineer & Game Developer @ Georgia Tech</p>
         </Link>
         <div className=' hidden lg:flex flex-row space-x-2'>
           <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
           <p>|</p>
           <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
         </div>
-        <div className='2xl:hidden xl:hidden lg:hidden md:flex sm:flex justify-end'>
+        <div className='lg:hidden justify-end'>
           <Popover>
             <PopoverTrigger><Bars3Icon className='h-6 w-6'></Bars3Icon></PopoverTrigger>
-            <PopoverContent className='flex justify-end max-w-fill w-25 2xl:hidden xl:hidden lg:hidden'>
+            <PopoverContent className='flex justify-end max-w-fill w-25 lg:hidden'>
               <div className='flex flex-col'>
                   <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
                   <Link href="/contact" className={`hover:text-[#A0BEE6] ${pathname === '/contact' ? 'active-link' : ''} ${roboto.className}`}>Contact</Link>
