@@ -8,9 +8,9 @@ import { bishopMoves, bishopCaptures } from './Pieces/Bishop'
 import { rookMoves, rookCaptures } from './Pieces/Rook'
 import { queenMoves, queenCaptures } from './Pieces/Queen'
 import { kingMoves, kingCaptures } from './Pieces/King'
-import * as Switch from "@radix-ui/react-switch";
 
 
+let whiteMove = true
 
 export interface Piece {
     name: string
@@ -366,22 +366,23 @@ export default function Chessboard(){
         }
     }, [whiteMove])
 
+    const restart = () => {
+        setPieces(initializePieces)
+        selectPiece(null)
+        setPromotion(null)
+        setEnPoissantSquare(null)
+        setCheckmate(false)
+        setStalemate(false)
+    }
+
     return (
         <div>
-            {/* The toggle for AI */}
-            <div className='flex justify-center pb-4'>
-                <label className="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" className="sr-only" checked={isAI} onChange={() => setIsAI(!isAI)} />
-                    <div className={`w-10 h-6 ${isAI ? 'bg-[#2c6af9]' : 'bg-gray-400'}  rounded-full shadow-inner`}></div>
-                    <div className={`absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform ${isAI ? 'transform translate-x-full' : ''}`}></div>
-                </label>
-                <span className="ml-2 text-black">{isAI ? "AI" : "2P"}</span>
-            </div>
-            
-
-            <div>
-                {checkmate && <div>Checkmate</div>}
-                {stalemate && <div>Stalemate</div>}
+            <div className='flex flex-col justify-center items-center text-white'>
+                {checkmate && <div className='pb-1'>Checkmate</div>}
+                {stalemate && <div className='pb-1'>Stalemate</div>}
+                {(checkmate || stalemate) && <div className='pb-2'>
+                    <button className="bg-[#022944] text-center px-1 rounded-md hover:bg-[#002742]" onClick={() => restart()}>Restart</button>
+                    </div>}
             </div>
             <div id='chessboard' className=''>
                 {board}

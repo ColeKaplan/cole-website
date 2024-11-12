@@ -3,14 +3,15 @@ import React from 'react';
 
 export default function FishOnLand(){
     return(
-        <div className='bg-slate-500 min-h-screen py-10'>
+        <div className='bg-slate-500 h-auto pt-10'>
             <div>
                 <UnityGame
                 build="/games/FishOnLand/index.html"
                 title="FishOnLand"
                 width="1000"
                 widthPercent=".75"
-                height="10000"
+                heightPercent=".8"
+                ratio=".5"
                 />
             </div>
         </div>
