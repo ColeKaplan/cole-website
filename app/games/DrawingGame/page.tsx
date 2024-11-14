@@ -52,12 +52,15 @@ export default function DrawingGame(){
     return(
         <div className='bg-slate-500 h-auto pt-10'>
             <div className="flex flex-col items-center justify-center overflow-x-hidden">
-                {/* <iframe src="/games/DrawingGame/index.html" 
-                width="500" 
-                height="500"
-                className=''/> */}
                 <h1 className='text-4xl font-bold text-[#FFFFFF] pb-4'>Drawing Game</h1>
-                {video}
+                {/* {video} */}
+                <iframe
+                    src="https://colewawa-drawforai.hf.space"
+                    width="850"
+                    height="430"
+                    className='overflow-hidden'
+                ></iframe>
+
             </div>
         </div>
     );
