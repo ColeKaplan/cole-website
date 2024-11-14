@@ -58,7 +58,6 @@ export default function DrawingGame(){
                     src="https://colewawa-drawforai.hf.space"
                     width="850"
                     height="430"
-                    className='overflow-hidden'
                 ></iframe>
 
             </div>
