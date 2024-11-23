@@ -11,7 +11,7 @@ export default function KnightsJourney(){
                 width="800"
                 widthPercent=".75"
                 heightPercent=".85"
-                ratio=".65"
+                ratio=".6"
                 />
             </div>
         </div>

@@ -11,7 +11,7 @@ export default function WildRanger(){
                 width="1000"
                 widthPercent=".75"
                 heightPercent=".95"
-                ratio=".62"
+                ratio=".5"
                 />
             </div>
         </div>

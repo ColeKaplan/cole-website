@@ -4,15 +4,24 @@ import React from 'react';
 export default function FishOnLand(){
     return(
         <div className='bg-slate-500 h-auto pt-10'>
-            <div>
+            <div className='flex flex-col items-center'> 
                 <UnityGame
                 build="/games/FishOnLand/index.html"
                 title="FishOnLand"
+                instructions="Since we didn't have time to make an instructions page... Everything is an enemy and kills you"
+                instructions2="Use arrow keys to move and jump"
                 width="1000"
                 widthPercent=".75"
                 heightPercent=".8"
                 ratio=".5"
                 />
+
+                <p className='text-[#ffffff] pt-1'>Creators: 
+                    <a href="https://www.linkedin.com/in/benjaminchern/" className={`hover:text-[#A0BEE6]`}> Benjamin Chern</a>, 
+                    Cole Kaplan
+                </p>
+                <p className='text-[#ffffff]'>I made Fish On Land for my first ever Game Jam, the Kenney Jam 2019</p>
+                <p className='text-[#ffffff]'>Even though it is simple, it remains my favorite game to play of all my Game Jam entries</p>
             </div>
         </div>
     );

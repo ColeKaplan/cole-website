@@ -33,7 +33,7 @@ export default function UnityGame(props: any) {
     useEffect(() => {
 
         const windowWidth = windowDimensions.width ? windowDimensions.width * props.widthPercent : props.width
-        const windowHeight = windowDimensions.height ? (windowDimensions.height - 180) * props.heightPercent : props.height // - 100 for the header
+        const windowHeight = windowDimensions.height ? (windowDimensions.height - 230) * props.heightPercent : props.height // - 100 for the header
         const useWidth = windowWidth * props.ratio < windowHeight
 
         const widthToUse = useWidth ? windowWidth : windowHeight / props.ratio
@@ -50,10 +50,9 @@ export default function UnityGame(props: any) {
     return(
         <div className="flex flex-col items-center justify-center overflow-x-hidden">
             <h1 className='text-4xl font-bold text-[#FFFFFF] pb-4'>{props.title}</h1>
-
+            {props.instructions ? <p className='text-[#ffffff] pt-1'>{props.instructions}</p> : <></>}
+            {props.instructions2 ? <p className='text-[#ffffff] pt-1'>{props.instructions2}</p> : <></>}
             {frame}
-
-            
         </div>
     );
 
