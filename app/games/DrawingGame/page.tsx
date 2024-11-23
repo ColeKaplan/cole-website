@@ -7,8 +7,8 @@ export default function DrawingGame(){
         <div className='bg-slate-500 h-auto pt-10'>
             <div className="flex flex-col items-center justify-center overflow-x-hidden">
                 <h1 className='text-4xl font-bold text-[#FFFFFF] pb-4'>Drawing Game</h1>
-                <p className='text-[#FFFFFF]'>Draw the prompted object. To get a new prompt, click 'Next'</p>
-                <p className='text-[#FFFFFF] pb-1'>The AI's top three guesses will be displayed under the prompt on the right</p>
+                <p className='text-[#FFFFFF]'>Draw the prompted object. To get a new prompt, click &apos;Next&apos;</p>
+                <p className='text-[#FFFFFF] pb-1'>The AI&apos;s top three guesses will be displayed under the prompt on the right</p>
 
                 <iframe
                     src="https://colewawa-drawforai.hf.space"

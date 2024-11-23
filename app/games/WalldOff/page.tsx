@@ -19,7 +19,7 @@ export default function WalldOff(){
                     Cole Kaplan
                 </p>
                 <p className='text-[#ffffff]'>I made Walled Off for the  Gwinnett County Public Library Game Jam 2024</p>
-                <p className='text-[#ffffff]'>Walled Off won first place in the jam, embodying the theme "Space Is Limited"</p>
+                <p className='text-[#ffffff]'>Walled Off won first place in the jam, embodying the theme &quot;Space Is Limited&quot;</p>
             </div>
         </div> 
     );
