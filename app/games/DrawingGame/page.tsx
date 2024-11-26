@@ -3,61 +3,25 @@ import React, { useEffect, useState } from 'react';
 
 export default function DrawingGame(){
 
-    const hasWindow = typeof window !== 'undefined';
-
-    function getWindowDimensions() {
-        const width = hasWindow ? window.innerWidth : null;
-        const height = hasWindow ? window.innerHeight : null;
-        return {
-        width,
-        height
-        };
-    }
-
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-    useEffect(() => {
-        if (hasWindow) {
-            const handleResize = () => {
-                setWindowDimensions(getWindowDimensions());
-            }
-            window.addEventListener('resize', handleResize);
-            return () => window.removeEventListener('resize', handleResize);
-        }
-    }, [hasWindow]);
-
-    const [video, setVideo] = useState(<></>);
-
-    useEffect(() => {
-
-        const widthPercent = .5
-        const heightPercent = .55
-        const ratio = .8
-
-        const windowWidth = windowDimensions.width ? windowDimensions.width * widthPercent : 300
-        const windowHeight = windowDimensions.height ? (windowDimensions.height - 180) * heightPercent : 450 // - 100 for the header
-        const useWidth = windowWidth * ratio < windowHeight
-
-        const widthToUse = useWidth ? windowWidth : windowHeight / ratio
-        const heightToUse = useWidth ? windowWidth * ratio : windowHeight
-
-        setVideo(<video className='rounded-lg'
-            src="/games/DrawingGame/DrawingVideo.mp4" 
-            width={widthToUse}
-            height={heightToUse}
-            controls muted />);
-    }, [windowDimensions]);
-
-
     return(
         <div className='bg-slate-500 h-auto pt-10'>
             <div className="flex flex-col items-center justify-center overflow-x-hidden">
-                {/* <iframe src="/games/DrawingGame/index.html" 
-                width="500" 
-                height="500"
-                className=''/> */}
                 <h1 className='text-4xl font-bold text-[#FFFFFF] pb-4'>Drawing Game</h1>
-                {video}
+                <p className='text-[#FFFFFF]'>Draw the prompted object. To get a new prompt, click &apos;Next&apos;</p>
+                <p className='text-[#FFFFFF] pb-1'>The AI&apos;s top three guesses will be displayed under the prompt on the right</p>
+
+                <iframe
+                    src="https://colewawa-drawforai.hf.space"
+                    width="850"
+                    height="430"
+                ></iframe>
+
+                <p className='text-[#ffffff] pt-1'>Creators: 
+                    <a href="https://www.linkedin.com/in/andrewdean-/" className={`hover:text-[#A0BEE6]`}> Andrew Dean</a>, 
+                    <a href="https://www.linkedin.com/in/michael-stewart-642b48201/" className={`hover:text-[#A0BEE6]`}> Michael Stewart</a>, Cole Kaplan
+                </p>
+                <a href="https://medium.com/@colegkaplan/doodle-drawing-318f1a403e4c" className='text-[#ffffff] hover:text-[#A0BEE6]'>How we made this and other related machine learning projects</a>
+
             </div>
         </div>
     );
