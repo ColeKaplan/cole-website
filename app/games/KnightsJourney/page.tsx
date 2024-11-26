@@ -18,7 +18,7 @@ export default function KnightsJourney(){
                     <a href="https://www.linkedin.com/in/benjaminchern/" className={`hover:text-[#A0BEE6]`}> Benjamin Chern</a>, 
                     Cole Kaplan
                 </p>
-                <p className='text-[#ffffff]'>I made Knight's Journey for a forgotten game jam in 2021</p>
+                <p className='text-[#ffffff]'>I made Knight&aposs Journey for a forgotten game jam in 2021</p>
                 <p className='text-[#ffffff]'>The focus of this game was to improve my skills in simulated physics, character animations, and collision calculations</p>
             </div>
         </div>

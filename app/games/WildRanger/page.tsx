@@ -21,7 +21,7 @@ export default function WildRanger(){
                     Cole Kaplan
                 </p>
                 <p className='text-[#ffffff]'>I made Wild Ranger for ScoreSpace Jam #26 in 2023</p>
-                <p className='text-[#ffffff]'>I am most proud of it's complete playability and leaderboard</p>
+                <p className='text-[#ffffff]'>I am most proud of it&aposs complete playability and leaderboard</p>
             </div>
         </div>
     );
