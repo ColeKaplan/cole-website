@@ -1,10 +1,11 @@
+import Header from "./Header";
 import HorizontalCard from "./HorizontalCard";
 
 export default function BrowserMainpage(){
     return (
         <div>
-            <div className='flex justify-center items-center flex-col text-[#FFFFFF]'>
-                <h1 className='text-3xl font-bold text-[#000000] mb-1 text-center'></h1>
+            <div className='pb-10 min-w-full'>
+                <Header />
             </div>
             <div className='hidden my-md:block'>
                 <div id="cardsForGames" className='flex justify-center'>
