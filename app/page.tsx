@@ -8,7 +8,7 @@ import MobileMainpage from '@/components/MobileMainpage';
 
 export default function Home(){
     return(
-        <div id="columnDivForPage" className='flex flex-col h-screen items-center bg-[#fffaf7]'>
+        <div id="columnDivForPage" className='flex flex-col h-dvh items-center bg-[#fffaf7]'>
             <div className='hidden my-md:block'>
                 <BrowserMainpage/>
             </div>
