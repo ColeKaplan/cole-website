@@ -1,9 +1,13 @@
+import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
 import React from 'react';
 
 export default function KnightsJourney(){
     return(
-        <div className='bg-slate-500 h-auto pt-10'>
+        <div className='bg-slate-500 h-auto'>
+            <div className='pb-10 min-w-full'>
+                <Header />
+            </div>
             <div className='flex flex-col items-center'>
                 <UnityGame
                 build="/games/KnightsJourney/index.html"
@@ -18,7 +22,7 @@ export default function KnightsJourney(){
                     <a href="https://www.linkedin.com/in/benjaminchern/" className={`hover:text-[#A0BEE6]`}> Benjamin Chern</a>, 
                     Cole Kaplan
                 </p>
-                <p className='text-[#ffffff]'>I made Knight&aposs Journey for a forgotten game jam in 2021</p>
+                <p className='text-[#ffffff]'>I made Knight&apos;s Journey for a forgotten game jam in 2021</p>
                 <p className='text-[#ffffff]'>The focus of this game was to improve my skills in simulated physics, character animations, and collision calculations</p>
             </div>
         </div>

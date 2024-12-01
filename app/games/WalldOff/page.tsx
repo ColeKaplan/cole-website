@@ -1,9 +1,13 @@
+import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
 import React from 'react';
 
 export default function WalldOff(){
     return(
-        <div className='h-auto pt-10 bg-slate-500'>
+        <div className='h-auto bg-slate-500'>
+            <div className='pb-10 min-w-full'>
+                <Header />
+            </div>
             <div className='flex flex-col items-center'> 
                 <UnityGame
                 build="/games/WalldOff/index.html"

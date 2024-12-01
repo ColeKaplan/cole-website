@@ -1,9 +1,13 @@
+import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
 import React from 'react';
 
 export default function WildRanger(){
     return(
-        <div className='h-auto pt-10 bg-slate-500'>
+        <div className='h-auto bg-slate-500'>
+            <div className='pb-10 min-w-full'>
+                <Header />
+            </div>
             <div className='flex flex-col items-center'>
                 <UnityGame
                 build="/games/WildRanger/index.html"
@@ -21,7 +25,7 @@ export default function WildRanger(){
                     Cole Kaplan
                 </p>
                 <p className='text-[#ffffff]'>I made Wild Ranger for ScoreSpace Jam #26 in 2023</p>
-                <p className='text-[#ffffff]'>I am most proud of it&aposs complete playability and leaderboard</p>
+                <p className='text-[#ffffff]'>I am most proud of it&apos;s complete playability and leaderboard</p>
             </div>
         </div>
     );

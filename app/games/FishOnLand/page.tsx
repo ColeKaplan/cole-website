@@ -1,9 +1,13 @@
+import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
 import React from 'react';
 
 export default function FishOnLand(){
     return(
-        <div className='bg-slate-500 h-auto pt-10'>
+        <div className='bg-slate-500 h-auto'>
+            <div className='pb-10 min-w-full'>
+                <Header />
+            </div>
             <div className='flex flex-col items-center'> 
                 <UnityGame
                 build="/games/FishOnLand/index.html"

@@ -1,11 +1,15 @@
 'use client'
+import Header from '@/components/Header';
 import React, { useEffect, useState } from 'react';
 
 export default function DrawingGame(){
 
     return(
-        <div className='bg-slate-500 h-auto pt-10'>
-            <div className="flex flex-col items-center justify-center overflow-x-hidden">
+        <div className='bg-slate-500 h-auto'>
+            <div className='pb-10 min-w-full'>
+                <Header />
+            </div>
+            <div className="sm:flex sm:flex-col items-center justify-center overflow-x-hidden hidden">
                 <h1 className='text-4xl font-bold text-[#FFFFFF] pb-4'>Drawing Game</h1>
                 <p className='text-[#FFFFFF]'>Draw the prompted object. To get a new prompt, click &apos;Next&apos;</p>
                 <p className='text-[#FFFFFF] pb-1'>The AI&apos;s top three guesses will be displayed under the prompt on the right</p>
@@ -22,6 +26,9 @@ export default function DrawingGame(){
                 </p>
                 <a href="https://medium.com/@colegkaplan/doodle-drawing-318f1a403e4c" className='text-[#ffffff] hover:text-[#A0BEE6]'>How we made this and other related machine learning projects</a>
 
+            </div>
+            <div className='flex sm:hidden items-center justify-center text-[#FFFFFF] text-md'>
+                <p> Please increase screen width or rotate screen </p>
             </div>
         </div>
     );
