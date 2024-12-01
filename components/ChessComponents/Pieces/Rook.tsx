@@ -130,3 +130,13 @@ export const rookCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: nu
     }
     return moves
 }
+
+
+export const rookValue = (pieces: Piece[][], piece: Piece, x: number, y: number) => {
+    let value = 500;
+
+    const captures = rookCaptures(pieces, piece, x, y).length
+    value += (captures * 10)
+
+    return value
+}

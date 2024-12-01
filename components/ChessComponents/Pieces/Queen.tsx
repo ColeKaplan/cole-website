@@ -13,3 +13,12 @@ export const queenCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: n
     const bishopCapturesList = bishopCaptures(pieces, piece, x, y)
     return [...rookCapturesList, ...bishopCapturesList]
 }
+
+export const queenValue = (pieces: Piece[][], piece: Piece, x: number, y: number) => {
+    let value = 900;
+
+    const captures = rookCaptures(pieces, piece, x, y).length
+    value += (captures * 5)
+
+    return value
+}

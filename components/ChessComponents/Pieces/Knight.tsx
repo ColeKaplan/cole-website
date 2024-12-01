@@ -33,3 +33,11 @@ export const knightCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: 
     }
     return moves
 }
+
+export const knightValue = (pieces: Piece[][], piece: Piece, x: number, y: number) => {
+    let value = 300
+    const captures = knightCaptures(pieces, piece, x, y).length
+    value += (captures * 20)
+
+    return value
+}

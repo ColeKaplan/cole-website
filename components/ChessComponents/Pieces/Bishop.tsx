@@ -130,3 +130,20 @@ export const bishopCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: 
     }
     return moves
 }
+
+
+export const bishopValue = (pieces: Piece[][], piece: Piece, x: number, y: number) => {
+    let value = 300;
+
+    let pieceCount = 0;
+    for(let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            if (pieces[i][j].empty == false) {
+                pieceCount += 1;
+            }
+        }
+    }
+    value += ((32 - pieceCount) * 6);
+
+    return value
+}

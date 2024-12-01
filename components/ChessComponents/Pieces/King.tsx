@@ -51,3 +51,7 @@ export const kingCaptures = (pieces: (Piece)[][], piece: Piece, x: number, y: nu
     }
     return moves
 }
+
+export const kingValue = (pieces: Piece[][], piece: Piece, x: number, y: number): number => {
+    return 10000
+}
