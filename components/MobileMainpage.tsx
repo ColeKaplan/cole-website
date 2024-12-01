@@ -8,7 +8,7 @@ export default function MobileMainpage(){
             <div className='pb-10 w-screen'>
                 <Header />
             </div>
-            <div className='flex flex-col my-md:hidden mb-10 min-h-max'>
+            <div className='flex flex-col my-md:hidden mb-10'>
                 <div id="cardsForGames" className='flex justify-center'>
                     <div className='hidden sm:block'>
                         <HorizontalCard 
