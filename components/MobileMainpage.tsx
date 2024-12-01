@@ -5,7 +5,7 @@ import HorizontalCard from "./HorizontalCard";
 export default function MobileMainpage(){
     return (
         <div className="h-fit">
-            <div className='pb-10 w-screen'>
+            <div className='pb-10 w-dvw'>
                 <Header />
             </div>
             <div className='flex flex-col my-md:hidden mb-10'>
