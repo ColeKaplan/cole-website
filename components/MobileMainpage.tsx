@@ -4,13 +4,13 @@ import HorizontalCard from "./HorizontalCard";
 
 export default function MobileMainpage(){
     return (
-        <div>
-            <div className='pb-10 min-w-full'>
+        <div className="">
+            <div className='pb-10 w-screen'>
                 <Header />
             </div>
             <div className='flex flex-col my-md:hidden mb-10 min-h-max'>
                 <div id="cardsForGames" className='flex justify-center'>
-                    <div className='w-full hidden sm:block'>
+                    <div className='hidden sm:block'>
                         <HorizontalCard 
                         link='/games/DrawingGame'
                         image='/games/DrawingGame/Car.png'
@@ -19,7 +19,7 @@ export default function MobileMainpage(){
                         />
                     </div>
 
-                    <div className='w-full flex sm:hidden'>
+                    <div className='flex sm:hidden'>
                         <Card 
                         link='/games/DrawingGame'
                         image='/games/DrawingGame/Car.png'
@@ -29,7 +29,7 @@ export default function MobileMainpage(){
                     </div>
                 </div>
                 <div className='flex justify-center'>
-                    <div className='w-full hidden sm:block'>
+                    <div className='hidden sm:block'>
                         <HorizontalCard 
                         link='/games/Chess'
                         image='/games/Chess/ChessImage.png'
@@ -38,7 +38,7 @@ export default function MobileMainpage(){
                         />
                     </div>
 
-                    <div className='w-full flex sm:hidden'>
+                    <div className='flex sm:hidden'>
                         <Card 
                         link='/games/Chess'
                         image='/games/Chess/ChessImage.png'
