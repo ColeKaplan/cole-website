@@ -4,7 +4,7 @@ import HorizontalCard from "./HorizontalCard";
 export default function MobileMainpage(){
     return (
         <div>
-            <div className='flex flex-col my-md:hidden'>
+            <div className='flex flex-col my-md:hidden mb-10'>
                 <div id="cardsForGames" className='flex justify-center'>
                     <div className='w-full hidden sm:block'>
                         <HorizontalCard 
