@@ -9,9 +9,12 @@ import MobileMainpage from '@/components/MobileMainpage';
 export default function Home(){
     return(
         <div id="columnDivForPage" className='flex flex-col h-screen items-center bg-[#fffaf7]'>
-        
-            <BrowserMainpage/>
-            <MobileMainpage/>
+            <div className='my-md:block'>
+                <BrowserMainpage/>
+            </div>
+            <div className='my-md:hidden'>
+                <MobileMainpage/>
+            </div>
 
             {/* <SocialsLinks/> */}
             
