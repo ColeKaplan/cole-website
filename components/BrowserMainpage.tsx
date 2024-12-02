@@ -3,7 +3,7 @@ import HorizontalCard from "./HorizontalCard";
 
 export default function BrowserMainpage(){
     return (
-        <div className="h-dvw pb-10">
+        <div className="h-dvw min-h-screen pb-10">
             <div className='pb-10 w-dvw'>
                 <Header />
             </div>
