@@ -24,7 +24,7 @@ function HorizontalCard(props: any) {
             <div className="ml-4 mr-4">
                 <h2 className={`${montserrat} font-black text-2xl`}>{props.title}</h2>
                 <p className={`text-sm`}>{props.text}</p>
-            </div>.
+            </div>
         </div>
         </button>
         </a>

@@ -4,10 +4,10 @@ import HorizontalCard from "./HorizontalCard";
 export default function BrowserMainpage(){
     return (
         <div className="h-screen">
-            <div className='pb-10 w-screen'>
+            <div className='pb-10 w-dvw'>
                 <Header />
             </div>
-            <div className='hidden my-md:block'>
+            <div className='flex flex-col justify-center items-center'>
                 <div id="cardsForGames" className='flex justify-center'>
                     <div className='w-1/2'>
                         <HorizontalCard
