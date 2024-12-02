@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 export default function DrawingGame(){
 
     return(
-        <div className='bg-slate-500 h-auto'>
+        <div className='bg-slate-500 h-auto pb-10'>
             <div className='pb-10 min-w-full'>
                 <Header />
             </div>

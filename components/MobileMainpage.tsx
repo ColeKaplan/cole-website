@@ -4,7 +4,7 @@ import HorizontalCard from "./HorizontalCard";
 
 export default function MobileMainpage(){
     return (
-        <div className="h-fit w-dvw">
+        <div className="h-dvw min-h-screen w-dvw">
             <div className='pb-10'>
                 <Header />
             </div>
