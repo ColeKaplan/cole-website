@@ -4,7 +4,7 @@ import HorizontalCard from "./HorizontalCard";
 export default function BrowserMainpage(){
     return (
         <div className="h-screen">
-            <div className='pb-10 min-w-full'>
+            <div className='pb-10 w-screen'>
                 <Header />
             </div>
             <div className='hidden my-md:block'>
