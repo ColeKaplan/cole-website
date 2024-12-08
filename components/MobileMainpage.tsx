@@ -5,9 +5,9 @@ import HorizontalCard from "./HorizontalCard";
 export default function MobileMainpage(){
     return (
         <div className="h-dvw min-h-screen w-dvw">
-            <div className='pb-10'>
+            <header className='pb-10'>
                 <Header />
-            </div>
+            </header>
             <div className='flex flex-col my-md:hidden mb-10'>
                 <div id="cardsForGames" className='flex justify-center'>
                     <div className='hidden sm:block'>

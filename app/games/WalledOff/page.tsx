@@ -1,8 +1,22 @@
+'use client'
 import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function WalledOff(){
+
+    {/* <!-- Google Tag Manager --> */}
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MMJ89G6J';
+        script.async = true;
+        document.head.appendChild(script);
+        return () => {
+            document.head.removeChild(script);
+        };
+    }, [])
+    {/* <!-- End Google Tag Manager --> */}
+
     return(
         <div className='h-auto bg-slate-500'>
 
@@ -10,9 +24,9 @@ export default function WalledOff(){
             <meta name="description" content="Wall of the skeletons to keep them away, but keep a path open to collect the coins that appear when the despawn." />
             <link rel="canonical" href="http://colekaplan.dev/games/WalledOff" />
 
-            <div className='pb-10 min-w-full'>
+            <header className='pb-10 min-w-full'>
                 <Header />
-            </div>
+            </header>
             <div className='flex flex-col items-center'> 
                 <UnityGame
                 build="/games/WalledOff/index.html"

@@ -1,7 +1,21 @@
+'use client'
 import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
+import React, { useEffect } from 'react';
 
 export default function FishOnLand(){
+
+    {/* <!-- Google Tag Manager --> */}
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MMJ89G6J';
+        script.async = true;
+        document.head.appendChild(script);
+        return () => {
+            document.head.removeChild(script);
+        };
+    }, [])
+    {/* <!-- End Google Tag Manager --> */}
 
     return(
         <div className='bg-slate-500 h-auto'>
@@ -10,9 +24,9 @@ export default function FishOnLand(){
             <meta name="description" content="Draw the prompt and get the AI to guess what you are drawing." />
             <link rel="canonical" href="http://colekaplan.dev/games/FishOnLand" />
 
-            <div className='pb-10 min-w-full'>
+            <header className='pb-10 min-w-full'>
                 <Header />
-            </div>
+            </header>
             <div className='flex flex-col items-center'> 
                 <UnityGame
                 build="/games/FishOnLand/index.html"

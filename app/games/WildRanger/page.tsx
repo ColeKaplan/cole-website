@@ -1,8 +1,22 @@
+'use client'
 import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function WildRanger(){
+
+    {/* <!-- Google Tag Manager --> */}
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MMJ89G6J';
+        script.async = true;
+        document.head.appendChild(script);
+        return () => {
+            document.head.removeChild(script);
+        };
+    }, [])
+    {/* <!-- End Google Tag Manager --> */}
+
     return(
         <div className='h-auto bg-slate-500'>
 
@@ -10,9 +24,9 @@ export default function WildRanger(){
             <meta name="description" content="Use your hats to destroy turrets but be careful not to waste too many if you want a high score." />
             <link rel="canonical" href="http://colekaplan.dev/games/WildRanger" />
 
-            <div className='pb-10 min-w-full'>
+            <header className='pb-10 min-w-full'>
                 <Header />
-            </div>
+            </header>
             <div className='flex flex-col items-center'>
                 <UnityGame
                 build="/games/WildRanger/index.html"

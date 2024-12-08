@@ -23,6 +23,14 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
       </head>
       <body className={`${inter.className} bg-slate-500 overscroll-none  text-[#000000]`}>
+      
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMJ89G6J"
+          height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+        
         {children}
       </body>
     </html>

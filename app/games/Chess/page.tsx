@@ -14,9 +14,9 @@ export default function Chess() {
             <link rel="canonical" href="http://colekaplan.dev/games/Chess" />
 
 
-            <div className='pb-10 min-w-full'>
+            <header className='pb-10 min-w-full'>
                 <Header />
-            </div>
+            </header>
             <div className='bg-[slate-500] sm:flex sm:flex-col h-auto hidden'>
                 <h1 className='text-4xl text-center font-bold text-[#FFFFFF]'>Chess</h1>
                 <div className='flex flex-col justify-center items-center min-h-screen pb-[20%]'>
