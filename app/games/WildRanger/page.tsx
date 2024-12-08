@@ -5,6 +5,11 @@ import React from 'react';
 export default function WildRanger(){
     return(
         <div className='h-auto bg-slate-500'>
+
+            <title>Wild Ranger</title>
+            <meta name="description" content="Use your hats to destroy turrets but be careful not to waste too many if you want a high score." />
+            <link rel="canonical" href="http://colekaplan.dev/games/WildRanger" />
+
             <div className='pb-10 min-w-full'>
                 <Header />
             </div>

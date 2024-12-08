@@ -14,7 +14,7 @@ export default function MobileMainpage(){
                         <HorizontalCard 
                         link='/games/DrawingGame'
                         image='/games/DrawingGame/Car.png'
-                        title="Drawing for AI"
+                        title="Draw for AI"
                         text="Try to get the AI to guess the category by drawing"
                         />
                     </div>
@@ -23,7 +23,7 @@ export default function MobileMainpage(){
                         <Card 
                         link='/games/DrawingGame'
                         image='/games/DrawingGame/Car.png'
-                        title="Drawing for AI"
+                        title="Draw for AI"
                         text="Try to get the AI to guess the category by drawing"
                         />
                     </div>

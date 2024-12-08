@@ -13,7 +13,7 @@ export default function BrowserMainpage(){
                         <HorizontalCard
                         link='/games/FishOnLand'
                         image='/games/FishOnLand/FishImage.png'
-                        title="Fish on Land"
+                        title="Fish On Land"
                         text="Help a lost fish return to his home in the ocean"
                         />
                     </div>
@@ -21,7 +21,7 @@ export default function BrowserMainpage(){
                         <HorizontalCard 
                         link='/games/DrawingGame'
                         image='/games/DrawingGame/Car.png'
-                        title="Drawing for AI"
+                        title="Draw for AI"
                         text="Try to get the AI to guess the category by drawing"
                         />
                     </div>
@@ -37,8 +37,8 @@ export default function BrowserMainpage(){
                     </div>
                     <div className='w-1/2'>
                         <HorizontalCard 
-                        link='/games/WalldOff'
-                        image='/games/WalldOff/WalldOffImage.png'
+                        link='/games/WalledOff'
+                        image='/games/WalledOff/WalledOffImage.png'
                         title="Walled Off"
                         text="Avoid the skeletons and collect coins using walls"
                         />

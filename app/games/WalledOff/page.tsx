@@ -2,15 +2,20 @@ import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
 import React from 'react';
 
-export default function WalldOff(){
+export default function WalledOff(){
     return(
         <div className='h-auto bg-slate-500'>
+
+            <title>Walled Off</title>
+            <meta name="description" content="Wall of the skeletons to keep them away, but keep a path open to collect the coins that appear when the despawn." />
+            <link rel="canonical" href="http://colekaplan.dev/games/WalledOff" />
+
             <div className='pb-10 min-w-full'>
                 <Header />
             </div>
             <div className='flex flex-col items-center'> 
                 <UnityGame
-                build="/games/WalldOff/index.html"
+                build="/games/WalledOff/index.html"
                 title="Walled Off"
                 width="800"
                 widthPercent=".75"

@@ -5,6 +5,11 @@ import React from 'react';
 export default function KnightsJourney(){
     return(
         <div className='bg-slate-500 h-auto'>
+
+            <title>Knight&apos;s Journey</title>
+            <meta name="description" content="Get through the enemies to reach the end of the dungeon" />
+            <link rel="canonical" href="http://colekaplan.dev/games/KnightsJourney" />
+
             <div className='pb-10 min-w-full'>
                 <Header />
             </div>

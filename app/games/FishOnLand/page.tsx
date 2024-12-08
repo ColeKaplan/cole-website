@@ -1,17 +1,22 @@
 import Header from '@/components/Header';
 import UnityGame from '@/components/UnityGame';
-import React from 'react';
 
 export default function FishOnLand(){
+
     return(
         <div className='bg-slate-500 h-auto'>
+
+            <title>Fish On Land</title>
+            <meta name="description" content="Draw the prompt and get the AI to guess what you are drawing." />
+            <link rel="canonical" href="http://colekaplan.dev/games/FishOnLand" />
+
             <div className='pb-10 min-w-full'>
                 <Header />
             </div>
             <div className='flex flex-col items-center'> 
                 <UnityGame
                 build="/games/FishOnLand/index.html"
-                title="FishOnLand"
+                title="Fish On Land"
                 instructions="Since we didn't have time to make an instructions page... Everything is an enemy and kills you"
                 instructions2="Use arrow keys to move and jump"
                 width="1000"
