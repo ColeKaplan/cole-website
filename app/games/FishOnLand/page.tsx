@@ -21,7 +21,7 @@ export default function FishOnLand(){
         <div className='bg-slate-500 h-auto'>
 
             <title>Fish On Land</title>
-            <meta name="description" content="Draw the prompt and get the AI to guess what you are drawing." />
+            <meta name="description" content="In this game you are a fish trying to return to the ocean. Traverse nine levels without getting hit by the enemy to complete the game! Created for the Kenny Game Jam in 2019 by Benjamin Chern and Cole Kaplan." />
             <link rel="canonical" href="http://colekaplan.dev/games/FishOnLand" />
 
             <header className='pb-10 min-w-full'>

@@ -5,6 +5,19 @@ import Header from '@/components/Header';
 
 
 export default function Chess() {
+
+    {/* <!-- Google Tag Manager --> */}
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MMJ89G6J';
+        script.async = true;
+        document.head.appendChild(script);
+        return () => {
+            document.head.removeChild(script);
+        };
+    }, [])
+    {/* <!-- End Google Tag Manager --> */}
+
     return (
         <div>
 
