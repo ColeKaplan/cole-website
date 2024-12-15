@@ -1,5 +1,6 @@
 'use client'
 import Header from '@/components/Header';
+import ReactUnity from '@/components/ReactUnity';
 import UnityGame from '@/components/UnityGame';
 import React, { useEffect } from 'react';
 
@@ -24,27 +25,13 @@ export default function FishOnLand(){
             <meta name="description" content="In this game you are a fish trying to return to the ocean. Traverse nine levels without getting hit by the enemy to complete the game! Created for the Kenny Game Jam in 2019 by Benjamin Chern and Cole Kaplan." />
             <link rel="canonical" href="http://colekaplan.dev/games/FishOnLand" />
 
-            <header className='pb-10 min-w-full'>
-                <Header />
-            </header>
             <div className='flex flex-col items-center'> 
-                <UnityGame
-                build="/games/FishOnLand/index.html"
-                title="Fish On Land"
-                instructions="Since we didn't have time to make an instructions page... Everything is an enemy and kills you"
-                instructions2="Use arrow keys to move and jump"
-                width="1000"
-                widthPercent=".75"
-                heightPercent=".8"
-                ratio=".5"
+                <ReactUnity
+                loaderUrlProp= "/games/FishOnLand/Build/Game Builds.loader.js"
+                dataUrlProp= "/games/FishOnLand/Build/Game Builds.data"
+                frameworkUrlProp= "/games/FishOnLand/Build/Game Builds.framework.js"
+                codeUrlProp= "/games/FishOnLand/Build/Game Builds.wasm"
                 />
-
-                <p className='text-[#ffffff] pt-1'>Creators: 
-                    <a href="https://www.linkedin.com/in/benjaminchern/" className={`hover:text-[#A0BEE6]`}> Benjamin Chern</a>, 
-                    Cole Kaplan
-                </p>
-                <p className='text-[#ffffff]'>I made Fish On Land for my first ever Game Jam, the Kenney Jam 2019</p>
-                <p className='text-[#ffffff]'>Even though it is simple, it remains my favorite game to play of all my Game Jam entries</p>
             </div>
         </div>
     );
