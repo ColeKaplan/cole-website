@@ -13,7 +13,7 @@ export default function BrowserMainpage(){
                         <HorizontalCard
                         link='/games/FishOnLand'
                         image='/games/FishOnLand/FishImage.png'
-                        title="Fish On Land"
+                        title="Fish Freedom Quest IV"
                         text="Help a lost fish return to his home in the ocean"
                         />
                     </div>

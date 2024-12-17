@@ -25,7 +25,7 @@ export default function Home(){
         <div id="columnDivForPage" className='flex flex-col items-center bg-[#fffaf7]'>
 
             <title>Cole Kaplan</title>
-            <meta name="description" content="Play games and test out projects developed by Cole Kaplan! Experience popular choices like Fish On Land, Draw for AI, Walled Off and more." />
+            <meta name="description" content="Play games and test out projects developed by Cole Kaplan! Experience popular choices like Fish Freedom Quest IV, Draw for AI, Walled Off and more." />
             <link rel="canonical" href="http://colekaplan.dev" />
 
             <div className='hidden my-md:block'>
