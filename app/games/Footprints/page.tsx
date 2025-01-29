@@ -103,7 +103,7 @@ export default function Footprints(){
                     <a href="https://www.linkedin.com/in/gordon-rose-asher/" className={`hover:text-[#A0BEE6]`}> Gordon Rose</a>, 
                     Sharon Chen, and Chandler
                 </p>
-                <p className='text-[#ffffff]'><a href="https://github.com/ColeKaplan/Footprints" className={`hover:text-[#A0BEE6]`}>Checkout out our github</a></p>
+                <p className='text-[#ffffff]'><a href="https://github.com/ColeKaplan/Footprints" className={`hover:text-[#A0BEE6]`} target="_blank" rel="noopener noreferrer">Checkout out our github</a></p>
             </div>
         </div>
     );
