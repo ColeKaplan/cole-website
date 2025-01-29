@@ -37,9 +37,10 @@ export default function Footprints(){
             </header>
 
 
-            <div className='flex flex-col items-center'>
-                <p className='text-5xl text-[#ffffff] pb-2'>Footprints</p>
-                <p className='text-xl text-[#ffffff]'>MIT Reality Hack 2025 Project Footprints. Footprints was the winner on the Snap Spectacles track!</p>
+            <div className='flex flex-col items-center text-[#ffffff]'>
+                <p className='text-5xl pb-2'>Footprints</p>
+                <p className='text-xl'>MIT Reality Hack 2025 Project Footprints</p>
+                <p>Footprints was the winner on the Snap Spectacles track!</p>
             </div>
 
             <div className=' max-w-[50dvw] w-[100%] aspect-[10/6] m-auto mt-8 mb-4'>
@@ -73,8 +74,8 @@ export default function Footprints(){
                 </p>
                 <p className='text-md pb-4'>
                     We built this on Snap Spectacles using their new feature of Anchor Points that allow objects to exist geospacially across sessions<br/>
-                    In addition we make use of their persistent storage to record everyone's messages so that other users can play them back<br/>
-                    By comparing the user's position to detected Anchor Points around them, we can craft their AR journey right in front of their eyes
+                    In addition we make use of their persistent storage to record everyone&apos;s messages so that other users can play them back<br/>
+                    By comparing the user&apos;s position to detected Anchor Points around them, we can craft their AR journey right in front of their eyes
                 </p>
                 <p className='text-2xl pb-2'>
                     Challenges we ran into:
@@ -85,7 +86,7 @@ export default function Footprints(){
                     All other interaction is through voice commands using the Spectacles advanced voice recognition (with an expandable UI for those that prefer it)
                 </p>
                 <p className='text-2xl pb-2'>
-                    What's next for Footprints:
+                    What&apos;s next for Footprints:
                 </p>
                 <p className='text-md pb-4'>
                     1. Add photos or 3d scans to show what a path looked like at different periods of time or in different seasons<br/>

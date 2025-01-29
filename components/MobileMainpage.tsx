@@ -47,6 +47,26 @@ export default function MobileMainpage(){
                         />
                     </div>
                 </div>
+
+                <div className='flex justify-center'>
+                    <div className='hidden sm:block'>
+                        <HorizontalCard 
+                        link='/games/Footprints'
+                        image='/games/Footprints/Footprints.png'
+                        title="Footprints"
+                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
+                        />
+                    </div>
+
+                    <div className='flex sm:hidden'>
+                        <Card 
+                        link='/games/Footprints'
+                        image='/games/Footprints/Footprints.png'
+                        title="Footprints"
+                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );

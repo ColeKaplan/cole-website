@@ -3,7 +3,7 @@ import HorizontalCard from "./HorizontalCard";
 
 export default function BrowserMainpage(){
     return (
-        <div className="h-dvh min-h-screen pb-10">
+        <div className="min-h-screen pb-10">
             <header className='pb-10 w-dvw'>
                 <Header />
             </header>
@@ -61,6 +61,17 @@ export default function BrowserMainpage(){
                         image='/games/KnightsJourney/KnightImage.png'
                         title="Knight's Journey"
                         text="Dungeon Crawler, try to get past the enemies"
+                        />
+                    </div>
+                </div>
+
+                <div className='flex justify-center'>
+                    <div className='w-50dvw'>
+                        <HorizontalCard 
+                        link='/games/Footprints'
+                        image='/games/Footprints/Footprints.png'
+                        title="Footprints"
+                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
                         />
                     </div>
                 </div>
