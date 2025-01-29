@@ -37,10 +37,10 @@ export default function Footprints(){
             </header>
 
 
-            <div className='flex flex-col items-center text-[#ffffff]'>
+            <div className='flex flex-col items-center text-[#ffffff] ml-2 mr-2'>
                 <p className='text-5xl pb-2'>Footprints</p>
-                <p className='text-xl'>MIT Reality Hack 2025 Project Footprints</p>
-                <p>Footprints was the winner on the Snap Spectacles track!</p>
+                <p className='text-xl text-center'>MIT Reality Hack 2025 Project Footprints</p>
+                <p className='text-center'>Footprints was the winner on the Snap Spectacles track!</p>
             </div>
 
             <div className=' max-w-[50dvw] w-[100%] aspect-[10/6] m-auto mt-8 mb-4'>
@@ -98,7 +98,7 @@ export default function Footprints(){
 
             <div className='flex flex-col items-center'>
             
-                <p className='text-[#ffffff] pt-1'>Creators: 
+                <p className='text-[#ffffff] pt-1 text-center text-lg'>Creators: 
                     <a href="https://www.linkedin.com/in/pranavasinghal/" className={`hover:text-[#A0BEE6]`}> Pranava Singhal</a>, Cole Kaplan,  
                     <a href="https://www.linkedin.com/in/gordon-rose-asher/" className={`hover:text-[#A0BEE6]`}> Gordon Rose</a>, 
                     Sharon Chen, and Chandler
