@@ -96,7 +96,7 @@ export default function Footprints(){
                 
             </div>
 
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center mb-6'>
             
                 <p className='text-[#ffffff] pt-1 text-center text-lg'>Creators: 
                     <a href="https://www.linkedin.com/in/pranavasinghal/" className={`hover:text-[#A0BEE6]`}> Pranava Singhal</a>, Cole Kaplan,  
