@@ -14,7 +14,7 @@ function HorizontalCard(props: any) {
 
     return (
         <a href={props.link}>
-        <button className='bg-[#c2e2f9] border-[rgb(83,100,122)] border-2 rounded-xl shadow-xl p-3 m-3 text-center
+        <button className='bg-[#c2e2f9] border-2 rounded-xl shadow-xl p-3 m-3 text-center
         active:bg-[#82cbff] active:text-black hover:bg-[#9fd7ff] hover:text-black max-w-xl
         grow'>
         <div className={`flex ${isTextRight ? 'flex-row-reverse' : 'flex-row'} items-center`}>

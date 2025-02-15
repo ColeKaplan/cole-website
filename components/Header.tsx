@@ -40,7 +40,7 @@ function Header() {
       </Link>
       <div className={`text-2xl flex justify-between ${roboto.className}`}>
         <Link href="/">
-          <p>Software Engineer & Game Developer @ Georgia Tech</p>
+          <p>Software Engineer & Game Developer at Georgia Tech</p>
         </Link>
         <div className=' hidden lg:flex flex-row space-x-2'>
           <Link href="/" className={`hover:text-[#A0BEE6] ${pathname === '/' ? 'active-link' : ''} ${roboto.className}`}>Home</Link>
