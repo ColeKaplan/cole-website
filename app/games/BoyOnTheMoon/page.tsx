@@ -23,7 +23,7 @@ export default function BoyMoon(){
     return(
         <div className='bg-slate-500 h-auto'>
 
-            <title>BoyMoon</title>
+            <title>BoyOnTheMoon</title>
             <meta name="description" content="A 3d graphic I made with OpenGL for my graphics class and translated to WebGL." />
             <link rel="canonical" href="http://colekaplan.dev/games/BoyMoon" />
             
