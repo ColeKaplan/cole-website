@@ -47,6 +47,25 @@ export default function MobileMainpage(){
                         />
                     </div>
                 </div>
+                <div className='flex justify-center'>
+                    <div className='hidden sm:block'>
+                        <HorizontalCard 
+                        link='/games/BoyMoon'
+                        image='/games/BoyMoon/BoyOnMoon.png'
+                        title="BoyMoon"
+                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
+                        />
+                    </div>
+
+                    <div className='flex sm:hidden'>
+                        <Card 
+                        link='/games/BoyMoon'
+                        image='/games/BoyMoon/BoyOnMoon.png'
+                        title="BoyMoon"
+                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
+                        />
+                    </div>
+                </div>
 
                 <div className='flex justify-center'>
                     <div className='hidden sm:block'>
