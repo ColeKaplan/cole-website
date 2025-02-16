@@ -29,6 +29,24 @@ export default function BrowserMainpage(){
                 <div className='flex justify-center'>
                     <div className='w-1/2'>
                         <HorizontalCard 
+                        link='/games/Footprints'
+                        image='/games/Footprints/Footprints.png'
+                        title="Footprints"
+                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
+                        />
+                    </div>
+                    <div className='w-1/2'>
+                        <HorizontalCard 
+                        link='/games/BoyMoon'
+                        image='/games/BoyMoon/BoyOnMoon.png'
+                        title="BoyMoon"
+                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
+                        />
+                    </div>
+                </div>
+                <div className='flex justify-center'>
+                    <div className='w-1/2'>
+                        <HorizontalCard 
                         link='/games/Chess'
                         image='/games/Chess/ChessImage.png'
                         title="Chess"
@@ -61,17 +79,6 @@ export default function BrowserMainpage(){
                         image='/games/KnightsJourney/KnightImage.png'
                         title="Knight's Journey"
                         text="Dungeon Crawler, try to get past the enemies"
-                        />
-                    </div>
-                </div>
-
-                <div className='flex justify-center'>
-                    <div className='w-50dvw'>
-                        <HorizontalCard 
-                        link='/games/Footprints'
-                        image='/games/Footprints/Footprints.png'
-                        title="Footprints"
-                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
                         />
                     </div>
                 </div>
