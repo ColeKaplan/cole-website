@@ -31,38 +31,38 @@ export default function MobileMainpage(){
                 <div className='flex justify-center'>
                     <div className='hidden sm:block'>
                         <HorizontalCard 
-                        link='/games/Chess'
-                        image='/games/Chess/ChessImage.png'
-                        title="Chess"
-                        text="Play a friend or challenge our algorithm in this classic game"
+                        link='/games/BoyMoon'
+                        image='/games/BoyMoon/BoyOnMoon.png'
+                        title="BoyOnMoon"
+                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
                         />
                     </div>
 
                     <div className='flex sm:hidden'>
                         <Card 
-                        link='/games/Chess'
-                        image='/games/Chess/ChessImage.png'
-                        title="Chess"
-                        text="Play a friend or challenge our algorithm in this classic game"
+                        link='/games/BoyMoon'
+                        image='/games/BoyMoon/BoyOnMoon.png'
+                        title="BoyOnMoon"
+                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
                         />
                     </div>
                 </div>
                 <div className='flex justify-center'>
                     <div className='hidden sm:block'>
                         <HorizontalCard 
-                        link='/games/BoyMoon'
-                        image='/games/BoyMoon/BoyOnMoon.png'
-                        title="BoyMoon"
-                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
+                        link='/games/Chess'
+                        image='/games/Chess/ChessImage.png'
+                        title="Chess"
+                        text="Play a friend or challenge our algorithm in this classic game"
                         />
                     </div>
 
                     <div className='flex sm:hidden'>
                         <Card 
-                        link='/games/BoyMoon'
-                        image='/games/BoyMoon/BoyOnMoon.png'
-                        title="BoyMoon"
-                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
+                        link='/games/Chess'
+                        image='/games/Chess/ChessImage.png'
+                        title="Chess"
+                        text="Play a friend or challenge our algorithm in this classic game"
                         />
                     </div>
                 </div>
