@@ -1,6 +1,7 @@
 'use client'
 import Header from '@/components/Header';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image'
 
 export default function DrawingGame(){
 
@@ -30,12 +31,14 @@ export default function DrawingGame(){
                 <h1 className='text-4xl font-bold text-[#FFFFFF] pb-4'>Draw for AI</h1>
                 <p className='text-[#FFFFFF]'>Draw the prompted object. To get a new prompt, click &apos;Next&apos;</p>
                 <p className='text-[#FFFFFF] pb-1'>The AI&apos;s top three guesses will be displayed under the prompt on the right</p>
-
-                <iframe
-                    src="https://colewawa-drawforai.hf.space"
-                    width="850"
-                    height="430"
-                ></iframe>
+                <div className=' relative'>
+                    <div className={` bg-white absolute w-[1.6rem] h-[1.3rem] top-4 left-[46%]`}/>
+                    <iframe
+                        src="https://colewawa-drawforai.hf.space"
+                        width="850"
+                        height="430"
+                    />
+                </div>
 
                 <p className='text-[#ffffff] pt-1'>Creators: 
                     <a href="https://www.linkedin.com/in/andrewdean-/" className={`hover:text-[#A0BEE6]`}> Andrew Dean</a>, 

@@ -19,28 +19,28 @@ export default function BrowserMainpage(){
                     </div>
                     <div className='w-1/2'>
                         <HorizontalCard 
-                        link='/games/DrawingGame'
-                        image='/games/DrawingGame/Car.png'
-                        title="Draw for AI"
-                        text="Try to get the AI to guess the category by drawing"
+                        link='/games/BoyOnTheMoon'
+                        image='/games/BoyMoon/BoyOnMoon.png'
+                        title="BoyOnTheMoon"
+                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
                         />
                     </div>
                 </div>
                 <div className='flex justify-center'>
                     <div className='w-1/2'>
                         <HorizontalCard 
-                        link='/games/Footprints'
-                        image='/games/Footprints/Footprints.png'
-                        title="Footprints"
-                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
+                        link='/games/DrawingGame'
+                        image='/games/DrawingGame/Car.png'
+                        title="Draw for AI"
+                        text="Try to get the AI to guess the category by drawing"
                         />
                     </div>
                     <div className='w-1/2'>
                         <HorizontalCard 
-                        link='/games/BoyOnTheMoon'
-                        image='/games/BoyMoon/BoyOnMoon.png'
-                        title="BoyOnTheMoon"
-                        text="3D Graphic created originally in OpenGL and converted to WebGL with Three.js"
+                        link='/games/Footprints'
+                        image='/games/Footprints/Footprints.png'
+                        title="Footprints"
+                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
                         />
                     </div>
                 </div>
