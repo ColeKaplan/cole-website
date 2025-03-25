@@ -9,7 +9,7 @@ export default function About(){
                 <div id='stuffAboutMe' className='flex flex-row items-center p-2 border rounded-md border-2 border-spacing-60'>
 
                     <div id='interestsContainer'>
-                        <h1 className='text-xl font-bold text-[#FFFFFF]'> Interests </h1>
+                        <h1 className='texta-xl font-bold text-[#FFFFFF]'> Interests </h1>
                         <div id='interests' className='flex flex-col items-center'>
                             <ul className='list-disc list-inside'>
                                 <li className='text-lg text-[#FFFFFF]'> Tennis </li>
