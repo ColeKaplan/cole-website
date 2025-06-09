@@ -73,7 +73,7 @@ export default function MobileMainpage(){
                         link='/games/Footprints'
                         image='/games/Footprints/Footprints.png'
                         title="Footprints"
-                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
+                        text="AR project using Snap Spectacles. Winner at MIT Reality Hack 2025!"
                         />
                     </div>
 
@@ -82,7 +82,7 @@ export default function MobileMainpage(){
                         link='/games/Footprints'
                         image='/games/Footprints/Footprints.png'
                         title="Footprints"
-                        text="AR project using Snap Spectacles. Winner of Spectacles track of MIT Reality Hack 2025!"
+                        text="AR project using Snap Spectacles. Winner at MIT Reality Hack 2025!"
                         />
                     </div>
                 </div>
