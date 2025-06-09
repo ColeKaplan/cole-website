@@ -19,10 +19,11 @@ export default function Footprints(){
     {/* <!-- End Google Tag Manager --> */}
 
     const IMAGES = [
-        { url: "/games/Footprints/OnStage.jpg", alt: "Photos on stage as winners!" },
-        { url: "/games/Footprints/Footprints.png", alt: "Footsteps Outside" },
-        { url: "/games/Footprints/Message.png", alt: "Bubble Message" },
-        { url: "/games/Footprints/Prizes.jpeg", alt: "Getting our prizes" },
+        { type: "image", url: "/games/Footprints/OnStage.jpg", alt: "Photos on stage as winners!" },
+        { type: "image", url: "/games/Footprints/Footprints.png", alt: "Footsteps Outside" },
+        // { type: "image", url: "/games/Footprints/Message.png", alt: "Bubble Message" },
+        { type: "image", url: "/games/Footprints/Prizes.jpeg", alt: "Getting our prizes" },
+        { type: "video", url: "/games/Footprints/DemoVideo.mp4", alt: "A Cool Demo!" },
       ]
 
     return(
@@ -39,8 +40,8 @@ export default function Footprints(){
 
             <div className='flex flex-col items-center text-[#ffffff] ml-2 mr-2'>
                 <p className='text-5xl pb-2'>Footprints</p>
-                <p className='text-xl text-center'>MIT Reality Hack 2025 Project Footprints</p>
-                <p className='text-center'>Footprints was the winner on the Snap Spectacles track!</p>
+                <p className='text-xl text-center'>Footprints was the winner on the Snap Spectacles track!</p>
+                <p className='text-center'>Spring 2025 Update: We have been sponsored by Snap Spectacles to continue development of Footprints into a complete application!!!</p>
             </div>
 
             <div className=' max-w-[50dvw] w-[100%] aspect-[10/6] m-auto mt-8 mb-4'>

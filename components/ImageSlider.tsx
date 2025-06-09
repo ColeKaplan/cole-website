@@ -2,8 +2,18 @@ import { useState } from "react"
 import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from "lucide-react"
 import "./ImageSlider.css"
 
+
+// type MediaItem = 
+//   | { type: "image"; url: string; alt: string }
+//   | { type: "video"; url: string; alt: string }
+
+// type ImageSliderProps = {
+//   images: MediaItem[]
+// }
+
 type ImageSliderProps = {
   images: {
+    type: string
     url: string
     alt: string
   }[]
@@ -42,15 +52,48 @@ export default function ImageSlider({ images }: ImageSliderProps) {
           overflow: "hidden",
         }}
       >
-        {images.map(({ url, alt }, index) => (
-          <img
-            key={url}
-            src={url}
-            alt={alt}
-            aria-hidden={imageIndex !== index}
-            className="img-slider-img"
-            style={{ translate: `${-100 * imageIndex}%` }}
-          />
+        {images.map(({ type, url, alt }, index) => (
+          // <img
+          //   key={url}
+          //   src={url}
+          //   alt={alt}
+          //   aria-hidden={imageIndex !== index}
+          //   className="img-slider-img"
+          //   style={{ translate: `${-100 * imageIndex}%` }}
+          // />
+          type === "image" ? (
+            <img
+              key={url}
+              src={url}
+              alt={alt}
+              aria-hidden={imageIndex !== index}
+              className="img-slider-img"
+              style={{ translate: `${-100 * imageIndex}%` }}
+            />
+          ) : (
+            // other JSX if type !== "image"
+            <video
+              key={url}
+              src={url}
+              aria-hidden={imageIndex !== index}
+              className="img-slider-img"
+              style={{
+                translate: `${-100 * imageIndex}%`,
+                objectFit: "contain", // 👈 keeps full video visible, no cropping
+                width: "100%",
+                height: "100%",
+                backgroundColor: "black", // 👈 optional: makes letterboxing look clean
+              }}
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              poster={alt} // You can use alt as poster or pass another prop if you want a thumbnail before play
+            >
+              Your browser does not support the video tag.
+            </video>
+          )
         ))}
       </div>
       <button
