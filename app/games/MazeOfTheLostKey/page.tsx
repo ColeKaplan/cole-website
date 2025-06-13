@@ -34,7 +34,7 @@ export default function MazeOfTheLostKey(){
                 width="800"
                 widthPercent=".75"
                 heightPercent=".85"
-                ratio=".6"
+                ratio=".625"
                 />
 
                 <p className='text-[#ffffff]'>I made Maze of The Lost Key for CS 4455: Game Design in Spring 2025</p>
