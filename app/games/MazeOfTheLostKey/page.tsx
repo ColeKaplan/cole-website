@@ -38,7 +38,7 @@ export default function MazeOfTheLostKey(){
                 />
 
                 <p className='text-[#ffffff]'>I made Maze of The Lost Key for CS 4455: Game Design in Spring 2025</p>
-                <p className='text-[#ffffff]'>My contribution was the enemy assets, fighting mechanics of the enemy and player, all collisions, key collection, and environment interactions</p>
+                <p className='text-[#ffffff] pl-2 pr-2'>My contribution was the enemy assets, fighting mechanics of the enemy and player, all collisions, key collection, and environment interactions</p>
             </div>
         </div>
     );

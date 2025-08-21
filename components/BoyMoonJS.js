@@ -5,20 +5,8 @@ import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { Water } from 'three/examples/jsm/objects/Water.js';
-import { TextureLoader } from 'three';
+import { useThree } from '@react-three/fiber';
 
-
-function CKicon() {
-    // Load the texture using useLoader
-    const iconTexture = useLoader(TextureLoader, '/favicon/favicon-32x32.png');
-  
-    return (
-      <mesh>
-        <planeGeometry args={[5, 5]} /> {/* Adjust the size as needed */}
-        <meshLambertMaterial map={iconTexture} />
-      </mesh>
-    );
-  }
 
 const WaterComponent = () => {
   const waterRef = useRef();
@@ -26,15 +14,16 @@ const WaterComponent = () => {
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   });
 
-  useEffect(() => {
+ useEffect(() => {
     if (waterRef.current) {
+      waterRef.current.material.fog = false;
       waterRef.current.material.uniforms['time'].value = 0;
     }
   }, []);
 
   useFrame(() => {
     if (waterRef.current) {
-      waterRef.current.material.uniforms['time'].value += 1.0 / 60.0;
+      waterRef.current.material.uniforms['time'].value += 1.0 / 120.0;
     }
   });
 
@@ -46,9 +35,10 @@ const WaterComponent = () => {
           textureWidth: 512,
           textureHeight: 512,
           waterNormals: waterNormals,
-          waterColor: 0x167686,
-          distortionScale: 3.7,
-          fog: false,
+          waterColor: new THREE.Color(0x167686),
+          distortionScale: 2,
+          sunColor: 0x000000,   // no light
+          fog: true,
         })
       }
       rotation={[-Math.PI / 2, 0, 0]}
@@ -57,16 +47,32 @@ const WaterComponent = () => {
   );
 };
 
+const FogComponent = () => {
+  const { scene } = useThree();
+  
+  useEffect(() => {
+    scene.fog = new THREE.Fog(0x000000, 50, 300); // Black fog
+    
+    // Cleanup
+    return () => {
+      scene.fog = null;
+    };
+  }, [scene]);
+  
+  return null;
+};
+
+
 export const Scene = () => {
   const [model, setModel] = useState(null);
 
   useEffect(() => {
-      const canvas = document.querySelector('canvas');
-      if (canvas) {
-        const renderer = new THREE.WebGLRenderer({ canvas });
-        renderer.setClearColor(0x000000); // Set background to black
-      }
-    }, []);
+    const canvas = document.querySelector('canvas');
+    if (canvas) {
+      const renderer = new THREE.WebGLRenderer({ canvas });
+      renderer.setClearColor(0x000000); // Set background to black
+    }
+  }, []);
 
   useEffect(() => {
     const mtlLoader = new MTLLoader();
@@ -96,17 +102,20 @@ export const Scene = () => {
 
   return (
     <>
-      <ambientLight intensity={0.1} />
-      <pointLight color={0x777777} intensity={1} position={[9, 3, 9]} distance={20} decay={4} />
-      <pointLight color={0xaaaaaa} intensity={1} position={[0, 5, 1]} distance={20} decay={4} />
+      <ambientLight intensity={0.4} />
+      <pointLight color={0x777777} intensity={10} position={[0, 7, .8]} distance={40} decay={0} />
+      <pointLight color={0xaaaaaa} intensity={2} position={[0, 5, 1]} distance={20} decay={4} />
       <OrbitControls minDistance={15} maxDistance={30} minPolarAngle={Math.PI / 4} maxPolarAngle={(2.5 * Math.PI) / 4} enablePan={false} minAzimuthAngle={-Math.PI * .3} maxAzimuthAngle={Math.PI * .3} />
       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-      
+
       {/* Water */}
       <WaterComponent />
 
+      {/* Fog */}
+      <FogComponent />
+
       {/* <CKicon /> */}
-      
+
       {/* Model */}
       {model && <primitive object={model} />}
     </>
