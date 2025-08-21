@@ -6,10 +6,11 @@ import HorizontalCard from '@/components/HorizontalCard';
 import './page.css'
 import BrowserMainpage from '@/components/BrowserMainpage';
 import MobileMainpage from '@/components/MobileMainpage';
+import SoftBodyDiv from '@/components/SoftbodyDiv';
 
-export default function Home(){
+export default function Home() {
 
-    {/* <!-- Google Tag Manager --> */}
+    {/* <!-- Google Tag Manager --> */ }
     useEffect(() => {
         const script = document.createElement('script');
         script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MMJ89G6J';
@@ -19,9 +20,9 @@ export default function Home(){
             document.head.removeChild(script);
         };
     }, [])
-    {/* <!-- End Google Tag Manager --> */}
+    {/* <!-- End Google Tag Manager --> */ }
 
-    return(
+    return (
         <div id="columnDivForPage" className='flex flex-col items-center bg-[#fffaf7]'>
 
             <title>Cole Kaplan</title>
@@ -29,14 +30,14 @@ export default function Home(){
             <link rel="canonical" href="http://colekaplan.dev" />
 
             <div className='hidden my-md:block'>
-                <BrowserMainpage/>
+                <BrowserMainpage />
             </div>
             <div className='flex my-md:hidden'>
-                <MobileMainpage/>
+                <MobileMainpage />
             </div>
 
             {/* <SocialsLinks/> */}
-            
+
         </div>
     );
 }
