@@ -11,10 +11,10 @@ export default function BrowserMainpage() {
                 <div id="cardsForGames" className='flex justify-center'>
                     <div className='w-1/2'>
                         <HorizontalCard
-                            link='/games/FishOnLand'
-                            image='/games/FishOnLand/FishImage.png'
-                            title="Fish On Land"
-                            text="Help a lost fish return to his home in the ocean"
+                            link='/games/DrawingGame'
+                            image='/games/DrawingGame/Car.png'
+                            title="Draw for AI"
+                            text="Try to get the AI to guess the category by drawing"
                         />
                     </div>
                     <div className='w-1/2'>
@@ -32,25 +32,25 @@ export default function BrowserMainpage() {
                             link='/games/MazeOfTheLostKey'
                             image='/games/MazeOfTheLostKey/LostMazeImage.png'
                             title="Maze Of The Lost Key"
-                            text="Try to get the AI to guess the category by drawing"
+                            text="Collect the keys and escape the dungeon"
                         />
                     </div>
-                    <div className='w-1/2'>
+                     <div className='w-1/2'>
+                        <HorizontalCard
+                            link='/games/FishOnLand'
+                            image='/games/FishOnLand/FishImage.png'
+                            title="Fish On Land"
+                            text="Help a lost fish return to his home in the ocean"
+                        />
+                    </div>
+                </div>
+                <div className='flex justify-center'>
+                     <div className='w-1/2'>
                         <HorizontalCard
                             link='/games/Footprints'
                             image='/games/Footprints/Footprints.png'
                             title="Footprints"
                             text="AR project using Snap Spectacles. Winner at MIT Reality Hack 2025!"
-                        />
-                    </div>
-                </div>
-                <div className='flex justify-center'>
-                    <div className='w-1/2'>
-                        <HorizontalCard
-                            link='/games/DrawingGame'
-                            image='/games/DrawingGame/Car.png'
-                            title="Draw for AI"
-                            text="Try to get the AI to guess the category by drawing"
                         />
                     </div>
                     <div className='w-1/2'>
