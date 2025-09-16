@@ -1,3 +1,4 @@
+import DissolvingCard from "./DissolvingCard";
 import Header from "./Header";
 import HorizontalCard from "./HorizontalCard";
 
@@ -10,12 +11,12 @@ export default function BrowserMainpage() {
             <div className='flex flex-col justify-center items-center'>
                 <div id="cardsForGames" className='flex justify-center'>
                     <div className='w-1/2'>
-                        <HorizontalCard
-                            link='/games/DrawingGame'
-                            image='/games/DrawingGame/Car.png'
-                            title="Draw for AI"
-                            text="Try to get the AI to guess the category by drawing"
-                            githubLink="https://github.com/ColeKaplan/AI_Drawing/tree/main"
+                        <DissolvingCard
+                            // link='/games/DrawingGame'
+                            // image='/games/DrawingGame/Car.png'
+                            // title="Draw for AI"
+                            // text="Try to get the AI to guess the category by drawing"
+                            // githubLink="https://github.com/ColeKaplan/AI_Drawing/tree/main"
                         />
                     </div>
                     <div className='w-1/2'>
