@@ -12,11 +12,11 @@ export default function BrowserMainpage() {
                 <div id="cardsForGames" className='flex justify-center'>
                     <div className='w-1/2'>
                         <DissolvingCard
-                            // link='/games/DrawingGame'
-                            // image='/games/DrawingGame/Car.png'
-                            // title="Draw for AI"
-                            // text="Try to get the AI to guess the category by drawing"
-                            // githubLink="https://github.com/ColeKaplan/AI_Drawing/tree/main"
+                            link='/games/DrawingGame'
+                            image='/games/DrawingGame/Car.png'
+                            title="Draw for AI"
+                            text="Try to get the AI to guess the category by drawing"
+                            githubLink="https://github.com/ColeKaplan/AI_Drawing/tree/main"
                         />
                     </div>
                     <div className='w-1/2'>

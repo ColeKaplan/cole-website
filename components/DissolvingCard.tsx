@@ -1,5 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
+import { Montserrat } from 'next/font/google';
+import { FaGithub } from 'react-icons/fa';
+import Image from 'next/image'
+
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    weight: ['400', '500', '700', '900'],
+});
 
 interface Particle {
     x: number;
@@ -27,7 +35,9 @@ interface ReAppearParticle {
     appearSpeed: number;
 }
 
-const DissolvingCard: React.FC = () => {
+function DissolvingCard(props: any) {
+    const isTextRight = props.isTextRight // for legacy purposes
+
     const divRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [dissolving, setDissolving] = useState(false);
@@ -56,12 +66,14 @@ const DissolvingCard: React.FC = () => {
 
         // Build snapshot for reappearing
         let reappearDiv = document.querySelector('#to-reappear') as HTMLElement
-        const reappearSnapshot = await html2canvas(reappearDiv, {
-            scale: 1,
-            useCORS: true,      // allows cross-origin images
-            backgroundColor: null,
-        });
-        setReappearSnapshot(reappearSnapshot);
+        if (reappearDiv != null) {
+            const reappearSnapshot = await html2canvas(reappearDiv, {
+                scale: 1,
+                useCORS: true,      // allows cross-origin images
+                backgroundColor: null,
+            });
+            setReappearSnapshot(reappearSnapshot);
+        }
 
         // 2. Build particle data
         const newParticles: Particle[] = [];
@@ -129,7 +141,7 @@ const DissolvingCard: React.FC = () => {
                 // Animation is done
                 setDissolving(false);
                 setDissolved(true);
-                handleReappear();
+                // handleReappear();
 
             }
         };
@@ -157,7 +169,7 @@ const DissolvingCard: React.FC = () => {
 
         const { width, height } = canvasSnapshot;
         const imgData = ctxSnapshot.getImageData(0, 0, width, height);
-        
+
 
         // 2. Build particle data
         const newParticles: ReAppearParticle[] = [];
@@ -245,6 +257,8 @@ const DissolvingCard: React.FC = () => {
 
     return (
         <div style={{ position: 'relative', display: 'inline-block' }}>
+            
+            {/*
             <div
                 ref={divRef}
                 id='to-disappear'
@@ -262,12 +276,36 @@ const DissolvingCard: React.FC = () => {
             >
                 <h2>Hello World</h2>
                 <p>This div will dissolve into particles!</p>
-                {/* <img
-          src="https://via.placeholder.com/100"
-          alt="placeholder"
-          style={{ display: 'block', margin: '10px auto' }}
-        /> */}
                 <button onClick={handleDissolve}>Dissolve</button>
+            </div>
+            */}
+
+
+            <div /* Should be an <a> tag but it doesn't let me nest <a> tags */
+                id='to-disappear'
+                onClick={handleDissolve}
+                className='bg-[#c2e2f9] border-2 rounded-xl shadow-xl p-3 m-3 text-center
+                    active:bg-[#82cbff] active:text-black hover:bg-[#9fd7ff] hover:text-black max-w-xl
+                    grow relative z-10'>
+                <div className={`flex ${isTextRight ? 'flex-row-reverse' : 'flex-row'} items-center`}>
+                    <div className="">
+                        <Image className='rounded-md max-w-60 max-h-40' src={props.image} width={420} height={320} alt={`${props.title} picture`} priority={true}></Image>
+                    </div>
+                    <div className="ml-4 mr-4">
+                        <h2 className={`${montserrat} font-black text-2xl`}>{props.title}</h2>
+                        <p className={`text-sm`}>{props.text}</p>
+                        {props.githubLink &&
+                            <a
+                                href={props.githubLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-[#676767] absolute bottom-2 right-2 active:text-[#949494]"
+                            >
+                                <FaGithub size={30} />
+                            </a>
+                        }
+                    </div>
+                </div>
             </div>
             {(dissolving || reappearing) && (
                 <canvas
@@ -281,9 +319,8 @@ const DissolvingCard: React.FC = () => {
                     }}
                 />
             )}
-            {((dissolved && reappeared) || (!dissolving && !dissolved && !reappeared)) && ( // To make it appear after instead of during, remove "dissolving ||"
+            {false && ((dissolved && reappeared) || (!dissolving && !dissolved && !reappeared)) && ( // To make it appear after instead of during, remove "dissolving ||"
                 <div
-                    ref={divRef}
                     id="to-reappear"
                     className="absolute top-0 left-0 w-full h-full z-0"
                     style={{

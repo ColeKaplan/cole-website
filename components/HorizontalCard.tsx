@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 });
 
 function HorizontalCard(props: any) {
-    const isTextRight = props.isTextRight
+    const isTextRight = props.isTextRight // for legacy purposes
     const router = useRouter();
 
     return (
