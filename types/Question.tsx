@@ -3,4 +3,5 @@ export type Question = {
   amount: number;
   category: string;
   magnitude: number;
+  source?: string;
 };
