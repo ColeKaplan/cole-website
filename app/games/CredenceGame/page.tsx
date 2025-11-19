@@ -186,7 +186,7 @@ export default function CredenceGame() {
                     /* Game Over Screen */
                     <div className='w-full max-w-3xl bg-white/10 backdrop-blur-lg rounded-3xl p-12 border border-white/20 shadow-2xl text-center'>
                         <h1 className='text-5xl font-bold text-white mb-4'>🎉 Game Complete!</h1>
-                        <p className='text-white/70 text-lg mb-8'>You've answered all available questions</p>
+                        <p className='text-white/70 text-lg mb-8'>You&apos;ve answered all available questions</p>
 
                         <div className='bg-white/10 rounded-2xl p-8 mb-8'>
                             <p className='text-white/70 text-sm font-medium mb-2'>Final Score</p>
