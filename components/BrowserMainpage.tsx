@@ -1,7 +1,10 @@
+import image from "next/image";
 import Header from "./Header";
 import HorizontalCard from "./HorizontalCard";
 
 export default function BrowserMainpage() {
+
+
     return (
         <div className="min-h-screen pb-10">
             <header className='pb-10 w-dvw'>
@@ -20,6 +23,16 @@ export default function BrowserMainpage() {
                     </div>
                     <div className='w-1/2'>
                         <HorizontalCard
+                            link='/games/CredenceGame'
+                            image='/games/CredenceGame/CredenceGame2.png'
+                            title="Credence Game"
+                            text="Evaluate and improve your confidence in your own knowledge"
+                        />
+                    </div>
+                </div>
+                <div className='flex justify-center'>
+                    <div className='w-1/2'>
+                        <HorizontalCard
                             link='/games/BoyOnTheMoon'
                             image='/games/BoyMoon/BoyOnMoon.png'
                             title="Boy On The Moon"
@@ -27,18 +40,18 @@ export default function BrowserMainpage() {
                             githubLink="https://github.com/CaydeXI/Computer-Graphics-Final/tree/main"
                         />
                     </div>
-                </div>
-                <div className='flex justify-center'>
                     <div className='w-1/2'>
                         <HorizontalCard
                             link='/games/MazeOfTheLostKey'
                             image='/games/MazeOfTheLostKey/LostMazeImage.png'
                             title="Maze Of The Lost Key"
                             text="Collect the keys and escape the dungeon"
-                            
+
                         />
                     </div>
-                     <div className='w-1/2'>
+                </div>
+                <div className='flex justify-center'>
+                    <div className='w-1/2'>
                         <HorizontalCard
                             link='/games/FishOnLand'
                             image='/games/FishOnLand/FishImage.png'
@@ -47,9 +60,7 @@ export default function BrowserMainpage() {
                             githubLink="https://github.com/ColeKaplan/FishOnLand"
                         />
                     </div>
-                </div>
-                <div className='flex justify-center'>
-                     <div className='w-1/2'>
+                    <div className='w-1/2'>
                         <HorizontalCard
                             link='/games/Footprints'
                             image='/games/Footprints/Footprints.png'
@@ -58,6 +69,9 @@ export default function BrowserMainpage() {
                             githubLink="https://github.com/ColeKaplan/Footprints"
                         />
                     </div>
+
+                </div>
+                <div className='flex justify-center'>
                     <div className='w-1/2'>
                         <HorizontalCard
                             link='/games/WalledOff'
@@ -67,10 +81,6 @@ export default function BrowserMainpage() {
                             githubLink="https://github.com/ColeKaplan/GCPL"
                         />
                     </div>
-
-                </div>
-                <div className='flex justify-center'>
-
                     <div className='w-1/2'>
                         <HorizontalCard
                             link='/games/WildRanger'
@@ -80,6 +90,8 @@ export default function BrowserMainpage() {
                             githubLink="https://github.com/ColeKaplan/ScoreSpaceGameJam"
                         />
                     </div>
+                </div>
+                <div className='flex justify-center'>
                     <div className='w-1/2'>
                         <HorizontalCard
                             link='/games/KnightsJourney'
@@ -89,15 +101,15 @@ export default function BrowserMainpage() {
                             githubLink="https://github.com/BenjaminChern/gameJam"
                         />
                     </div>
-                </div>
-                <div className='flex justify-center'>
-                    <HorizontalCard
-                        link='/games/Chess'
-                        image='/games/Chess/ChessImage.png'
-                        title="Chess"
-                        text="Play a friend in this classic game"
-                        githubLink="https://github.com/ColeKaplan/Chess-Game"
-                    />
+                    <div className='w-1/2'>
+                        <HorizontalCard
+                            link='/games/Chess'
+                            image='/games/Chess/ChessImage.png'
+                            title="Chess"
+                            text="Play a friend in this classic game. Automatic opponent in progress"
+                            githubLink="https://github.com/ColeKaplan/Chess-Game"
+                        />
+                    </div>
                 </div>
             </div>
         </div >
