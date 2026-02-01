@@ -74,20 +74,23 @@ const questions: Question[] = [
     {
         title: "Vehicles in the World (2025)",
         amount: 1_645_000_000,
-        category: "",
+        category: "General",
         magnitude: 9,
+        source: "https://hedgescompany.com/blog/2021/06/how-many-cars-are-there-in-the-world/"
     },
     {
         title: "Cows on Earth",
         amount: 1_570_000_000,
         category: "Science",
         magnitude: 9,
+        source: "https://www.statista.com/statistics/263979/global-cattle-population-since-1990/",
     },
     {
-        title: "People born each day (2025)",
-        amount: 395_000,
+        title: "People born each day (2026)",
+        amount: 362_714,
         category: "General",
         magnitude: 5,
+        source: "https://worldpopulationreview.com/countries/births-per-day",
     },
     {
         title: "People above 7ft tall",
@@ -131,6 +134,13 @@ const questions: Question[] = [
         category: "Nature",
         magnitude: 5,
     },
+    {
+        title: "Years Since the Earth was Formed",
+        amount: 4_540_000_000,
+        category: "Science",
+        magnitude: 9,
+        source: "https://pubs.usgs.gov/gip/geotime/age.html",
+    }
 ];
 
 export default questions;

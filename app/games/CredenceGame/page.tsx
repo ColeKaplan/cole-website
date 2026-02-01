@@ -137,7 +137,7 @@ export default function CredenceGame() {
         let loop = true;
         let a = availableQuestions[0], b = availableQuestions[0];
         let attempts = 0;
-        const maxAttempts = 100; // Prevent infinite loops
+        const maxAttempts = 40; // Prevent infinite loops
 
         while (loop && attempts < maxAttempts) {
             attempts++;
@@ -176,7 +176,7 @@ export default function CredenceGame() {
     }
 
     return (
-        <div className='min-h-screen bg-slate-50'>
+        <div className='min-h-screen bg-[#d4edff]'>
             <header className='pb-10 min-w-full'>
                 <Header />
             </header>
